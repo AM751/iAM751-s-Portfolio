@@ -1,9 +1,432 @@
-<html>
-  <head>
-    <title>My Cool Portfolio</title>
-  </head>
-  <body>
-    <h1>AHAMED MAAHIN SIDDIQ RAHUMAN</h1>
-    <p>UI/UX DESIGNER</p>
-  </body>
+To make your **About Me** section match the typography of the rest of the website, we need to ensure the headings use **`Orbitron`** and the body text uses **`Oswald`** (your primary body font) instead of the default browser `sans-serif`.
+
+Here is the complete, updated code. The typography in the `.about-bio` and `.skills-grid` classes has been updated to match your site's neon arcade aesthetic seamlessly.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>i AM 751s | Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link class="nav-link" rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Reset & Base Variables --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-color: #0d0d0d;
+            --primary-neon: #00ffcc;
+            --accent-pink: #ff007f; 
+            
+            /* Multi-glow split configuration keys */
+            --glow-left: #ff007f;   /* Hot Pink */
+            --glow-right: #00ffcc;  /* Neon Cyan */
+            
+            --text-main: #ffffff;
+            --text-muted: #eeeeee;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Oswald', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- Global Typography --- */
+        h1, h2, h3, h4, .nav-link, .number-line {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* --- Header Navigation --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(13, 13, 13, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 204, 0.1);
+        }
+
+        /* Left-to-right color split with drop-shadow filter layers */
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+
+            /* Linear background mask text-clipping */
+            background: linear-gradient(90deg, var(--glow-left) 0%, var(--glow-right) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            
+            /* Drop shadow calculation array fields */
+            filter: 
+                drop-shadow(-4px 0px 8px rgba(255, 0, 127, 0.6))
+                drop-shadow(4px 0px 8px rgba(0, 255, 204, 0.6))
+                drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.2));
+                
+            animation: splitPulse 4s ease-in-out infinite alternate;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-pink);
+            text-shadow: 0 0 8px var(--accent-pink);
+        }
+
+        /* --- Section Layouts --- */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        /* --- Hero Section --- */
+        #hero h1 {
+            color: var(--primary-neon);
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
+            animation: glitch 3s infinite;
+        }
+
+        #hero p {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .number-line {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 2px solid var(--primary-neon);
+            width: 350px;
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+        }
+
+        /* --- Funky Custom Button --- */
+        .cta-btn {
+            position: relative;
+            font-family: 'Orbitron', sans-serif;
+            background: transparent;
+            color: var(--primary-neon);
+            text-transform: uppercase;
+            padding: 15px 35px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: 2px solid var(--primary-neon);
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            color: var(--bg-color);
+            background: var(--primary-neon);
+            box-shadow: 0 0 30px var(--primary-neon);
+            transform: scale(1.05) rotate(-2deg); 
+        }
+
+        /* --- Works Gallery (Grid Layout) --- */
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--text-main);
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent-pink);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .work-card {
+            background: #161616;
+            border: 1px solid #262626;
+            border-radius: 8px;
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease, border-color 0.4s ease;
+            cursor: pointer;
+        }
+
+        .work-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.8));
+            z-index: 1;
+        }
+
+        .work-card:hover {
+            transform: translateY(-10px) translateY(2px) scale(1.02);
+            border-color: var(--accent-pink);
+            box-shadow: -5px 5px 0px var(--primary-neon); 
+        }
+
+        .work-card h3 {
+            position: relative;
+            z-index: 2;
+            color: var(--text-main);
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .work-card p {
+            position: relative;
+            z-index: 2;
+            color: var(--primary-neon);
+            font-size: 0.9rem;
+        }
+
+        /* --- About Me Section Upgraded Typography --- */
+        .about-container {
+            max-width: 900px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            text-align: left;
+        }
+
+        .about-bio h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary-neon);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .about-bio p {
+            font-family: 'Oswald', sans-serif; /* Matched to site body font */
+            font-size: 1.25rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: #141414;
+            border: 1px solid #262626;
+            border-left: 4px solid var(--accent-pink);
+            padding: 20px;
+            border-radius: 6px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-neon);
+        }
+
+        .skill-card h4 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .skill-card p {
+            font-family: 'Oswald', sans-serif; /* Matched to site body font */
+            color: #aaa;
+            font-size: 1.05rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            line-height: 1.5;
+            text-transform: uppercase;
+        }
+
+        /* --- Keyframe Animations --- */
+        @keyframes glitch {
+            0%, 100% { text-shadow: 0 0 20px rgba(0, 255, 204, 0.3); }
+            50% { text-shadow: -3px 0 var(--accent-pink), 3px 0 var(--primary-neon); }
+        }
+
+        /* Controls breathing of split-color drop-shadow matrix */
+        @keyframes splitPulse {
+            0% {
+                filter: 
+                    drop-shadow(-2px 0px 6px rgba(255, 0, 127, 0.5))
+                    drop-shadow(2px 0px 6px rgba(0, 255, 204, 0.5))
+                    drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.1));
+            }
+            100% {
+                filter: 
+                    drop-shadow(-6px 0px 14px rgba(255, 0, 127, 0.8))
+                    drop-shadow(6px 0px 14px rgba(0, 255, 204, 0.8))
+                    drop-shadow(0px 0px 30px rgba(255, 255, 255, 0.3));
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">i AM 751</div>
+        <nav>
+            <a href="#hero">Home</a>
+            <a href="#works">Works</a>
+            <a href="#about">About</a>
+            <a href="#collab">Collaboration?</a>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <h1>AHAMED MAAHIN SIDDIQ RAHUMAN</h1>
+        <p>UI/UX DESIGNER</p>
+        
+        <!-- <a href="#works" class="cta-btn">View My Level Select</a>
+
+        <div class="number-line">
+            <span>01</span>
+            <span>02</span>
+            <span>03</span>
+            <span>04</span>
+            <span>05</span>
+        </div>
+    </section> -->
+
+    <section id="works">
+        <h2 class="section-title">My PROJECTS</h2>
+
+        <div class="grid-container">
+            
+            <a href="https://ahamed-maahin.itch.io/candy-war" target="_blank" class="work-card" style="background-image: url('your-project-thumb1.jpg'); background-size: cover; text-decoration: none;">
+                <h3>CANDY WAR</h3>
+                <p>DEVELOPER</p>
+            </a>
+            
+            <a href="https://scubatank.itch.io/night-shift-scratcher" target="_blank" class="work-card" style="background-image: url('your-project-thumb2.jpg'); background-size: cover; text-decoration: none;">
+                <h3>NIGHT SHIFT SCRATCHER</h3>
+                <p>UI/UX DEVELOPER</p>
+            </a>
+
+            <a href="https://ahamed-maahin.itch.io/r0ll-on" target="_blank" class="work-card" style="background-image: url('your-project-thumb3.jpg'); background-size: cover; text-decoration: none;">
+                <h3>R0LL ON</h3>
+                <p>DEVELOPER</p>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Upgraded About Section -->
+    <section id="about">
+        <h2 class="section-title">who AM I?</h2>
+
+        <div class="about-container">
+            
+            <div class="about-bio">
+                <h3>Hello, I'm Maahin 👋</h3>
+                <p>
+                    I am a multi-disciplinary UI/UX designer in GAME DEVELOPMENT Industry and passionate about crafting immersive, user-centered digital environments. I blend tactile interface design, soundscapes, and interactive mechanics to craft engaging user experiences.
+                </p>
+                <p>
+                    Whether I'm wireframing game interfaces, mapping user journeys, or prototyping interactive levels, my goal is always the same: make it intuitive, beautiful, functional and engaging.
+                </p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4>🎨 UI/UX Design</h4>
+                    <p>Figma, Adobe After Effects, Wireframing, User Research, Prototyping, Interactive Layouts</p>
+                </div>
+
+                <div class="skill-card">
+                    <h4>🎮 Game Dev & Engines</h4>
+                    <p>Unity, Level Design, User Interface Development</p>
+                </div>
+
+                <div class="skill-card">
+                    <h4>🛠️ Tools & Technologies</h4>
+                    <p>Github, Adobe Photoshop, Figma, Sound Design</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="margin-top: 40px;">
+            <a href="https://drive.google.com/file/d/1qdKl5k4n4m_1fVPU_TO1_hskXH8gU1lS/view?usp=drive_link" target="_blank" class="cta-btn">
+                📄 About Me (CV)
+            </a>
+        </div>
+    </section>
+
+    <section id="collab">
+        <h2 class="section-title">COLLABORATION SPACE</h2>
+        <p style="max-width: 600px; margin: 0 auto; line-height: 1.6; font-size: 1.2rem;">
+            e-mail : ahamaasidrah@gmail.com
+        </p>
+    </section>
+
+</body>
 </html>
+
