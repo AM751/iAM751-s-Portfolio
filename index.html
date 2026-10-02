@@ -418,9 +418,21 @@ Here is the complete, updated code. The typography in the `.about-bio` and `.ski
 
     <section id="collab">
         <h2 class="section-title">COLLABORATION SPACE</h2>
-        <p style="max-width: 600px; margin: 0 auto; line-height: 1.6; font-size: 1.2rem;">
-            e-mail : ahamaasidrah@gmail.com
-        </p>
+        
+        <!-- We changed this box to "flex-direction: column" so they stack top-to-bottom instead of side-by-side! -->
+        <div style="margin-top: 40px; display: flex; flex-direction: column; gap: 15px; align-items: center;">
+            
+            <!-- The Top Bar of the 7! We use "margin-right: 150px" to slide it to the left -->
+            <a href="mailto:ahamaasidrah@gmail.com" class="cta-btn" style="width: 300px; height: 65px; padding: 0; display: flex; justify-content: center; align-items: center; margin-right: 150px;">
+                📧 EMAIL ME
+            </a>
+
+            <!-- The Leg of the 7! We use "margin-left: 150px" to slide it to the right -->
+            <a href="PUT_YOUR_REAL_LINKEDIN_LINK_HERE" target="_blank" class="cta-btn" style="width: 300px; height: 65px; padding: 0; display: flex; justify-content: center; align-items: center; margin-left: 150px;">
+                💼 CONNECT ON LINKEDIN
+            </a>
+            
+        </div>
     </section>
 
 </body>
