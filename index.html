@@ -24,23 +24,27 @@ Here is the complete, updated code. The typography in the `.about-bio` and `.ski
         }
 
         :root {
-            --bg-color: #0d0d0d;
-            --primary-neon: #00ffcc;
-            --accent-pink: #ff007f; 
+            --bg-color: #0d0d0d; /* Very dark gray for the main background */
+            --primary-neon: #FF4500; /* Fiery Orange from your controller border */
+            --accent-pink: #FFB300; /* Bright Yellow/Orange from the smiley face */
             
             /* Multi-glow split configuration keys */
-            --glow-left: #ff007f;   /* Hot Pink */
-            --glow-right: #00ffcc;  /* Neon Cyan */
+            --glow-left: #FF4500;   /* Fiery Orange */
+            --glow-right: #FFB300;  /* Bright Yellow */
             
-            --text-main: #ffffff;
-            --text-muted: #eeeeee;
+            --text-main: #ffffff; /* White text */
+            --text-muted: #eeeeee; /* Light gray text */
         }
 
         body {
-            background-color: var(--bg-color);
+            /* We start with a dark color, but the animation will take over! */
+            background-color: var(--bg-color); 
             color: var(--text-main);
             font-family: 'Oswald', sans-serif;
             overflow-x: hidden;
+            
+            /* This is the spell that makes it blink! */
+            animation: arcadeBlink 6s infinite alternate; 
         }
 
         /* --- Global Typography --- */
@@ -65,25 +69,16 @@ Here is the complete, updated code. The typography in the `.about-bio` and `.ski
             border-bottom: 1px solid rgba(0, 255, 204, 0.1);
         }
 
-        /* Left-to-right color split with drop-shadow filter layers */
-        .logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-
-            /* Linear background mask text-clipping */
-            background: linear-gradient(90deg, var(--glow-left) 0%, var(--glow-right) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* For my Logo */
+        .my-cool-logo {
+            height: 80px; 
+            width: auto;  
             
-            /* Drop shadow calculation array fields */
-            filter: 
-                drop-shadow(-4px 0px 8px rgba(255, 0, 127, 0.6))
-                drop-shadow(4px 0px 8px rgba(0, 255, 204, 0.6))
-                drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.2));
-                
-            animation: splitPulse 4s ease-in-out infinite alternate;
+            /* The Invisibility Cloak! This makes the black background of your picture disappear */
+            mix-blend-mode: screen;
+            
+            /* This tells it to use our new inside-glow animation */
+            animation: insidePulse 2s ease-in-out infinite alternate;
         }
 
         nav a {
@@ -311,27 +306,24 @@ Here is the complete, updated code. The typography in the `.about-bio` and `.ski
             50% { text-shadow: -3px 0 var(--accent-pink), 3px 0 var(--primary-neon); }
         }
 
-        /* Controls breathing of split-color drop-shadow matrix */
-        @keyframes splitPulse {
+        /* This makes the colors INSIDE the controller light up and get super bright! */
+        @keyframes insidePulse {
             0% {
-                filter: 
-                    drop-shadow(-2px 0px 6px rgba(255, 0, 127, 0.5))
-                    drop-shadow(2px 0px 6px rgba(0, 255, 204, 0.5))
-                    drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.1));
+                /* Normal colors */
+                filter: brightness(1) saturate(1); 
             }
             100% {
-                filter: 
-                    drop-shadow(-6px 0px 14px rgba(255, 0, 127, 0.8))
-                    drop-shadow(6px 0px 14px rgba(0, 255, 204, 0.8))
-                    drop-shadow(0px 0px 30px rgba(255, 255, 255, 0.3));
+                /* Super bright, glowing colors! */
+                filter: brightness(1.4) saturate(1.5); 
             }
         }
+        
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">i AM 751</div>
+        <img src="darkThemeLogo.png" class="my-cool-logo" alt="My Logo">
         <nav>
             <a href="#hero">Home</a>
             <a href="#works">Works</a>
