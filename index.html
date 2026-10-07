@@ -95,18 +95,21 @@ Here is the complete, updated code. The typography in the `.about-bio` and `.ski
         nav a {
             color: var(--text-main);
             text-decoration: none;
-            margin-left: 30px; /* Gives the words a little more breathing room */
-            font-size: 1.5rem; /* This makes the words MUCH bigger! */
-            font-weight: 700;  /* This makes the words nice and bold */
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center; /* This makes sure they sit perfectly in the middle next to the logo */
+            margin-left: 30px; 
+            font-size: 1.5rem; 
+            font-weight: 700;  
+            transition: all 0.4s ease;
+            display: inline-block; /* THIS IS THE SECRET FOR SPINNING! */
         }
 
         nav a:hover {
-            color: var(--primary-neon); /* Turns the word fiery orange! */
-            text-shadow: 0 0 15px var(--accent-pink); /* Gives it a bright yellow glow! */
-            transform: scale(1.1); /* Makes the word pop out and get a little bigger! */
+            color: var(--accent-pink); /* Turns the word soft yellow/orange */
+            /* The soft nightlight glow! */
+            text-shadow: 
+                0px 0px 8px rgba(255, 69, 0, 0.5),  
+                0px 0px 15px rgba(255, 215, 0, 0.3); 
+            /* The relaxing breeze turn! */
+            animation: slowTurn 6s ease-in-out infinite;
         }
 
         /* --- Section Layouts --- */
@@ -341,8 +344,9 @@ Here is the complete, updated code. The typography in the `.about-bio` and `.ski
             75% { transform: rotate(3deg); }
             100% { transform: rotate(0deg); }
         }
-        
+
     </style>
+
 </head>
 <body>
 
