@@ -10,6 +10,8 @@ Here is the complete, updated code. The typography in the `.about-bio` and `.ski
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>i AM 751s | Portfolio</title>
 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link class="nav-link" rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
@@ -344,6 +346,32 @@ Here is the complete, updated code. The typography in the `.about-bio` and `.ski
             75% { transform: rotate(3deg); }
             100% { transform: rotate(0deg); }
         }
+
+                /* 📱 THE MOBILE SHAPESHIFTING SPELL 📱 */
+        @media only screen and (max-width: 768px) {
+            
+            /* 1. Shrink the giant menu words so they fit on one line */
+            nav a {
+                font-size: 1rem !important;
+                margin-left: 10px !important;
+                padding: 5px !important;
+            }
+
+            /* 2. Make the Project Posters squeeze to fit the phone screen */
+            #works div {
+                width: 90% !important; /* Forces the boxes to fit inside the screen */
+                margin: 15px auto !important;
+            }
+
+            /* 3. Turn off the "7" shape margins so the buttons don't fly off the screen! */
+            #collab a {
+                margin-left: 0px !important;
+                margin-right: 0px !important;
+                width: 90% !important; /* Fits perfectly on the phone */
+                max-width: 300px !important;
+            }
+        }
+
 
     </style>
 
