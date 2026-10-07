@@ -81,6 +81,17 @@ Here is the complete, updated code. The typography in the `.about-bio` and `.ski
             animation: insidePulse 2s ease-in-out infinite alternate;
         }
 
+       .my-cool-logo:hover {
+            /* A very soft, gentle nightlight glow that won't hurt the eyes! */
+            filter: 
+                drop-shadow(0px 0px 10px rgba(255, 69, 0, 0.4))
+                drop-shadow(0px 0px 15px rgba(255, 215, 0, 0.2));
+            
+            /* We also slowed the turn down even more (from 4s to 6s) */
+            animation: slowTurn 6s ease-in-out infinite;
+            cursor: pointer;
+        }
+
         nav a {
             color: var(--text-main);
             text-decoration: none;
@@ -93,8 +104,9 @@ Here is the complete, updated code. The typography in the `.about-bio` and `.ski
         }
 
         nav a:hover {
-            color: var(--accent-pink);
-            text-shadow: 0 0 8px var(--accent-pink);
+            color: var(--primary-neon); /* Turns the word fiery orange! */
+            text-shadow: 0 0 15px var(--accent-pink); /* Gives it a bright yellow glow! */
+            transform: scale(1.1); /* Makes the word pop out and get a little bigger! */
         }
 
         /* --- Section Layouts --- */
@@ -322,6 +334,14 @@ Here is the complete, updated code. The typography in the `.about-bio` and `.ski
             }
         }
 
+        /* A super slow, tiny turn so it feels relaxing and not distracting */
+        @keyframes slowTurn {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(-3deg); }
+            75% { transform: rotate(3deg); }
+            100% { transform: rotate(0deg); }
+        }
+        
     </style>
 </head>
 <body>
