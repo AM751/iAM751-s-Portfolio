@@ -347,30 +347,55 @@ Here is the complete, updated code. The typography in the `.about-bio` and `.ski
             100% { transform: rotate(0deg); }
         }
 
-                /* 📱 THE MOBILE SHAPESHIFTING SPELL 📱 */
+                 /* 📱 THE UPGRADED MOBILE SHAPESHIFTING SPELL 📱 */
         @media only screen and (max-width: 768px) {
             
-            /* 1. Shrink the giant menu words so they fit on one line */
+            /* 1. Fix the Header: Stack the Logo on top and the words underneath */
+            header {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                padding: 10px !important;
+            }
+            
+            /* Give the menu words room to breathe and wrap to a new line if needed */
+            nav {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+                margin-top: 15px !important;
+            }
             nav a {
                 font-size: 1rem !important;
-                margin-left: 10px !important;
-                padding: 5px !important;
+                margin: 5px 10px !important;
             }
 
-            /* 2. Make the Project Posters squeeze to fit the phone screen */
+            /* 2. Fix the Projects: Force the inner container to be a single column stack! */
+            #works, 
+            #works > div {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                width: 100% !important;
+            }
+
+            /* The Poster Frame Fix: Make sure the cards fit inside the phone screen perfectly */
             #works div {
-                width: 90% !important; /* Forces the boxes to fit inside the screen */
-                margin: 15px auto !important;
+                width: 90% !important; 
+                max-width: 350px !important; /* Stops them from stretching too wide */
+                height: 250px !important; 
+                margin: 15px auto !important; 
             }
 
-            /* 3. Turn off the "7" shape margins so the buttons don't fly off the screen! */
+            /* 3. Fix the 7-shape buttons on mobile */
             #collab a {
                 margin-left: 0px !important;
                 margin-right: 0px !important;
-                width: 90% !important; /* Fits perfectly on the phone */
+                width: 90% !important; 
                 max-width: 300px !important;
             }
         }
+
 
 
     </style>
