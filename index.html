@@ -562,6 +562,46 @@ To make your **About Me** section match the typography of the rest of the websit
             100% { transform: translateY(0px) rotate(90deg); }
         }
 
+                /* ☀️ THE LIGHT MODE CHANGEOVER SPELL ☀️ */
+        body.light-mode {
+            --bg-color: #f4f4f9; /* Soft daytime white/gray */
+            --text-main: #111111; /* Dark text for easy reading */
+            --text-muted: #444444; 
+            background-color: var(--bg-color); 
+            animation: none; /* Turns off the dark mode arcade blink! */
+        }
+
+        /* Fixes the Logo so it doesn't vanish in the light! */
+        body.light-mode .my-cool-logo {
+            filter: invert(1) hue-rotate(180deg); 
+            mix-blend-mode: multiply;
+        }
+
+        /* Keeps your game card text white so it pops against the pictures */
+        body.light-mode .work-card h3,
+        body.light-mode .work-card p {
+            color: #ffffff; 
+        }
+
+        /* The Sun/Moon Button Style */
+        .theme-switch {
+            background: transparent;
+            border: 2px solid var(--primary-neon);
+            font-size: 1.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-left: 20px;
+            padding: 5px 10px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .theme-switch:hover {
+            transform: scale(1.2) rotate(15deg);
+            background: rgba(255, 69, 0, 0.2);
+            box-shadow: 0 0 15px var(--primary-neon);
+        }
+
 
     </style>
 
@@ -584,12 +624,19 @@ To make your **About Me** section match the typography of the rest of the websit
 
     <header>
         <img src="darkThemeLogo.png" class="my-cool-logo" alt="My Logo">
+
         <nav>
+
             <a href="#hero">HOME</a>
             <a href="#works">PROJECTS</a>
             <a href="#about">WHO AM I?</a>
             <a href="#collab">COLLABORATION?</a>
+            
+            <!-- Dark/Night theme switch button! -->
+            <button class="theme-switch" id="themeBtn">☀️</button>
+
         </nav>
+
     </header>
 
     <section id="hero">
@@ -692,6 +739,23 @@ To make your **About Me** section match the typography of the rest of the websit
             
         </div>
     </section>
+
+        <!-- 🧠 THE WEBSITE BRAIN for switching from DARK/LIGHT THEME (JavaScript) 🧠 -->
+    <script>
+        const btn = document.getElementById('themeBtn');
+        
+        btn.addEventListener('click', function() {
+            // This turns the Light Mode CSS on and off!
+            document.body.classList.toggle('light-mode');
+            
+            // This checks if light mode is on, and swaps the icon!
+            if(document.body.classList.contains('light-mode')) {
+                btn.innerText = '🌙'; // Change to moon
+            } else {
+                btn.innerText = '☀️'; // Change back to sun
+            }
+        });
+    </script>
 
 </body>
 </html>
