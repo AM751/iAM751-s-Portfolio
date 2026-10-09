@@ -393,12 +393,194 @@ To make your **About Me** section match the typography of the rest of the websit
             }
         }
 
+                /* --- 🌟 BACKGROUND SHAPES 🌟 --- */
+        .neon-shape {
+            position: fixed; /* Keeps them floating on the screen even when you scroll */
+            z-index: -1; /* Pushes them completely behind your text and buttons! */
+            opacity: 0.15; /* VERY soft transparency so it doesn't hurt the eyes */
+        }
+
+        /* The Glowing Orange Circle */
+        .circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%; /* Makes it a perfect circle */
+            border: 3px solid var(--primary-neon); /* Hollow inside, fiery orange border */
+            box-shadow: 0 0 15px var(--primary-neon), inset 0 0 15px var(--primary-neon);
+            top: 25%; /* Places it near the top left */
+            left: 10%;
+            /* Uses the blink and float spells! */
+            animation: shapeBlink 4s infinite alternate, floatShape 12s infinite linear;
+        }
+
+        /* The Glowing Yellow Square */
+        .square {
+            width: 90px;
+            height: 90px;
+            border: 3px solid var(--accent-pink); /* Hollow inside, bright yellow border */
+            box-shadow: 0 0 15px var(--accent-pink), inset 0 0 15px var(--accent-pink);
+            bottom: 20%; /* Places it near the bottom right */
+            right: 15%;
+
+            /* Uses the same spells, but starts 2 seconds later so they blink at different times! */
+            animation: shapeBlink 5s infinite alternate, floatShape 15s infinite linear;
+            animation-delay: 2s; 
+        }
+
+                /* The Glowing Orange Diamond */
+        .diamond {
+            width: 70px;
+            height: 70px;
+            border: 3px solid var(--primary-neon);
+            box-shadow: 0 0 15px var(--primary-neon), inset 0 0 15px var(--primary-neon);
+            bottom: 40%; 
+            right: 8%; /* Placed on the middle-right side */
+            /* Uses the same spells, but floats a little faster! */
+            animation: shapeBlink 6s infinite alternate, floatShape 10s infinite linear;
+            animation-delay: 1s; 
+        }
+
+        /* The Glowing Yellow Pill/Capsule */
+        .pill {
+            width: 35px;
+            height: 90px;
+            border-radius: 50px; /* This makes the rectangle round on the top and bottom! */
+            border: 3px solid var(--accent-pink);
+            box-shadow: 0 0 15px var(--accent-pink), inset 0 0 15px var(--accent-pink);
+            top: 15%; 
+            right: 25%; /* Placed near the top right */
+            animation: shapeBlink 7s infinite alternate, floatShape 14s infinite linear;
+            animation-delay: 3s; 
+        }
+
+                /* The Tiny Orange Mini-Orb */
+        .mini-orb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-neon);
+            box-shadow: 0 0 10px var(--primary-neon), inset 0 0 10px var(--primary-neon);
+            top: 50%; 
+            left: 5%; /* Placed on the middle-left side */
+            animation: shapeBlink 3s infinite alternate, floatShape 8s infinite linear;
+            animation-delay: 0.5s; 
+        }
+
+        /* 🟡 Giant Yellow Peeking Ring (Top Left Corner) */
+        .giant-ring {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-pink);
+            box-shadow: 0 0 15px var(--accent-pink), inset 0 0 15px var(--accent-pink);
+            top: -5%; /* The negative number makes it peek halfway into the screen! */
+            left: -5%;
+            animation: shapeBlink 8s infinite alternate, floatShape 20s infinite linear;
+            animation-delay: 4s;
+        }
+
+        /* 🟠 Glowing Orange Oval (Bottom Left) */
+        .oval {
+            width: 120px;
+            height: 50px;
+            border-radius: 50px;
+            border: 3px solid var(--primary-neon);
+            box-shadow: 0 0 15px var(--primary-neon), inset 0 0 15px var(--primary-neon);
+            bottom: 15%;
+            left: 25%;
+            animation: shapeBlink 5s infinite alternate, floatShape 11s infinite linear;
+            animation-delay: 1.5s;
+        }
+
+        /* 🟠 Floating Small Orange Square (Bottom Right Edge) */
+        .small-square {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary-neon);
+            box-shadow: 0 0 10px var(--primary-neon), inset 0 0 10px var(--primary-neon);
+            top: 75%;
+            right: 5%;
+            animation: shapeBlink 4s infinite alternate, floatShape 9s infinite linear;
+            animation-delay: 2.5s;
+        }
+
+        /* 🟡 Tall Yellow Diamond (Middle Left) */
+        .tall-diamond {
+            width: 50px;
+            height: 100px;
+            border: 2px solid var(--accent-pink);
+            box-shadow: 0 0 12px var(--accent-pink), inset 0 0 12px var(--accent-pink);
+            top: 40%;
+            left: 45%;
+            animation: shapeBlink 6s infinite alternate, floatShape 13s infinite linear;
+            animation-delay: 0.8s;
+        }
+
+        /* 🟠 Extra Orange Ring (Middle Right) */
+        .extra-ring {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid var(--primary-neon);
+            box-shadow: 0 0 15px var(--primary-neon), inset 0 0 15px var(--primary-neon);
+            bottom: 30%;
+            right: 35%;
+            animation: shapeBlink 5.5s infinite alternate, floatShape 12s infinite linear;
+            animation-delay: 3.5s;
+        }
+
+        /* 🟡 Top Mini Yellow Pill (Top Middle) */
+        .mini-pill-yellow {
+            width: 20px;
+            height: 50px;
+            border-radius: 20px;
+            border: 2px solid var(--accent-pink);
+            box-shadow: 0 0 10px var(--accent-pink), inset 0 0 10px var(--accent-pink);
+            top: 12%;
+            right: 45%;
+            animation: shapeBlink 3.5s infinite alternate, floatShape 7s infinite linear;
+            animation-delay: 1.2s;
+        }
+
+        /* 🪄 The Soft Blinking Spell */
+        @keyframes shapeBlink {
+            0% { opacity: 0.05; } /* Barely visible */
+            100% { opacity: 0.3; } /* Softly brightens */
+        }
+
+
+        /* 🪄 The Soft Blinking Spell */
+        @keyframes shapeBlink {
+            0% { opacity: 0.05; } /* Barely visible */
+            100% { opacity: 0.3; } /* Softly brightens */
+        }
+
+        /* 🍃 The Gentle Floating and Spinning Spell */
+        @keyframes floatShape {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(45deg); }
+            100% { transform: translateY(0px) rotate(90deg); }
+        }
 
 
     </style>
 
 </head>
+
 <body>
+
+        <!-- 🌟 The Background Neon Shapes! 🌟 -->
+    <div class="neon-shape circle"></div>
+    <div class="neon-shape square"></div>
+    <div class="neon-shape diamond"></div>
+    <div class="neon-shape pill"></div>
+    <div class="neon-shape mini-orb"></div>
+    <div class="neon-shape giant-ring"></div>
+    <div class="neon-shape oval"></div>
+    <div class="neon-shape small-square"></div>
+    <div class="neon-shape tall-diamond"></div>
+    <div class="neon-shape extra-ring"></div>
+    <div class="neon-shape mini-pill-yellow"></div>
 
     <header>
         <img src="darkThemeLogo.png" class="my-cool-logo" alt="My Logo">
