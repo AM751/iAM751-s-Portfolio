@@ -367,24 +367,23 @@ To make your **About Me** section match the typography of the rest of the websit
                 margin: 5px 10px !important;
             }
 
-            /* 2. Fix the Projects: Force the inner container to be a single column stack! */
-            #works, 
-            #works > div {
+            /* 2. Fix the Projects Container: Force it to be a stack */
+            .grid-container {
                 display: flex !important;
                 flex-direction: column !important;
                 align-items: center !important;
                 width: 100% !important;
             }
 
-            /* The Poster Frame Fix: Make sure the cards fit inside the phone screen perfectly */
-            #works div {
+            /* 3. The Poster Frame Fix: Target the ACTUAL Game Cards! */
+            .work-card {
                 width: 90% !important; 
                 max-width: 350px !important; /* Stops them from stretching too wide */
-                height: 250px !important; 
+                height: 250px !important; /* Forces the card to be nice and tall! */
                 margin: 15px auto !important; 
             }
 
-            /* 3. Fix the 7-shape buttons on mobile */
+            /* 4. Fix the 7-shape buttons on mobile */
             #collab a {
                 margin-left: 0px !important;
                 margin-right: 0px !important;
@@ -392,6 +391,7 @@ To make your **About Me** section match the typography of the rest of the websit
                 max-width: 300px !important;
             }
         }
+
 
                 /* --- 🌟 BACKGROUND SHAPES 🌟 --- */
         .neon-shape {
@@ -628,7 +628,7 @@ To make your **About Me** section match the typography of the rest of the websit
         <nav>
 
             <a href="#hero">HOME</a>
-            <a href="#works">PROJECTS</a>
+            <a href="#works">MY PROJECTS</a>
             <a href="#about">WHO AM I?</a>
             <a href="#collab">COLLABORATION?</a>
             
