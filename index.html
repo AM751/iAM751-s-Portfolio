@@ -569,6 +569,28 @@ To make your **About Me** section match the typography of the rest of the websit
             --text-muted: #444444; 
             background-color: var(--bg-color); 
             animation: none; /* Turns off the dark mode arcade blink! */
+
+             /* Fixes the Header background to be light and visible */
+            body.light-mode header {
+            background: rgba(244, 244, 249, 0.95); 
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+            /* Turns the navigation links dark so they can be read */
+            body.light-mode nav a {
+             color: #111111; 
+             text-shadow: none; /* Removes muddy glows */
+            }
+
+            body.light-mode nav a:hover {
+             color: var(--primary-neon); 
+            }
+
+            /* Cleans up the Hero heading glow for light mode */
+            body.light-mode #hero h1 {
+              text-shadow: none; 
+            }
+
         }
 
         /* Fixes the Logo so it doesn't vanish in the light! */
@@ -586,7 +608,7 @@ To make your **About Me** section match the typography of the rest of the websit
         /* The Sun/Moon Button Style */
         .theme-switch {
             background: transparent;
-            border: 2px solid var(--primary-neon);
+            border: none;
             font-size: 1.5rem;
             border-radius: 50%;
             cursor: pointer;
@@ -633,7 +655,10 @@ To make your **About Me** section match the typography of the rest of the websit
             <a href="#collab">COLLABORATION?</a>
             
             <!-- Dark/Night theme switch button! -->
-            <button class="theme-switch" id="themeBtn">☀️</button>
+            <button class="theme-switch" id="themeBtn">
+                <img src="theme-on.svg" alt="Theme Switch" id="themeIcon" style="width: 50px; height: 50px;">
+            </button>
+
 
         </nav>
 
@@ -740,22 +765,24 @@ To make your **About Me** section match the typography of the rest of the websit
         </div>
     </section>
 
-        <!-- 🧠 THE WEBSITE BRAIN for switching from DARK/LIGHT THEME (JavaScript) 🧠 -->
+        <!-- 🧠 THE WEBSITE BRAIN for DARK/LIGHT mode switch(JavaScript) 🧠 -->
     <script>
         const btn = document.getElementById('themeBtn');
+        const themeIcon = document.getElementById('themeIcon');
         
         btn.addEventListener('click', function() {
-            // This turns the Light Mode CSS on and off!
+            // Turn Light Mode CSS on and off
             document.body.classList.toggle('light-mode');
             
-            // This checks if light mode is on, and swaps the icon!
+            // Swap the custom Figma SVGs!
             if(document.body.classList.contains('light-mode')) {
-                btn.innerText = '🌙'; // Change to moon
+                themeIcon.src = 'theme-off.svg'; // The dark grey version
             } else {
-                btn.innerText = '☀️'; // Change back to sun
+                themeIcon.src = 'theme-on.svg'; // The glowing yellow version
             }
         });
     </script>
+
 
 </body>
 </html>
