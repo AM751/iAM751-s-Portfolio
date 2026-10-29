@@ -1,13 +1,9 @@
-To make your **About Me** section match the typography of the rest of the website, we need to ensure the headings use **`Orbitron`** and the body text uses **`Oswald`** (your primary body font) instead of the default browser `sans-serif`.
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>i AM 751s | Portfolio</title>
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link class="nav-link" rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,26 +19,18 @@ To make your **About Me** section match the typography of the rest of the websit
         }
 
         :root {
-            --bg-color: #0d0d0d; /* Very dark gray for the main background */
-            --primary-neon: #FF4500; /* Fiery Orange from your controller border */
-            --accent-pink: #FFB300; /* Bright Yellow/Orange from the smiley face */
-            
-            /* Multi-glow split configuration keys */
-            --glow-left: #FF4500;   /* Fiery Orange */
-            --glow-right: #FFB300;  /* Bright Yellow */
-            
-            --text-main: #ffffff; /* White text */
-            --text-muted: #eeeeee; /* Light gray text */
+            --bg-color: #0d0d0d; 
+            --primary-neon: #FF4500; 
+            --accent-pink: #FFB300; 
+            --text-main: #ffffff; 
+            --text-muted: #eeeeee; 
         }
 
         body {
-            /* We start with a dark color, but the animation will take over! */
             background-color: var(--bg-color); 
             color: var(--text-main);
             font-family: 'Oswald', sans-serif;
             overflow-x: hidden;
-            
-            /* This is the spell that makes it blink! */
             animation: arcadeBlink 6s infinite alternate; 
         }
 
@@ -66,29 +54,27 @@ To make your **About Me** section match the typography of the rest of the websit
             background: rgba(13, 13, 13, 0.8);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0, 255, 204, 0.1);
+            transition: all 0.3s ease;
         }
 
-        /* For my Logo */
         .my-cool-logo {
             height: 80px; 
             width: auto;  
-            
-            /* The Invisibility Cloak! This makes the black background of your picture disappear */
             mix-blend-mode: screen;
-            
-            /* This tells it to use our new inside-glow animation */
             animation: insidePulse 2s ease-in-out infinite alternate;
         }
 
        .my-cool-logo:hover {
-            /* A very soft, gentle nightlight glow that won't hurt the eyes! */
             filter: 
                 drop-shadow(0px 0px 10px rgba(255, 69, 0, 0.4))
                 drop-shadow(0px 0px 15px rgba(255, 215, 0, 0.2));
-            
-            /* We also slowed the turn down even more (from 4s to 6s) */
             animation: slowTurn 6s ease-in-out infinite;
             cursor: pointer;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
         }
 
         nav a {
@@ -98,17 +84,41 @@ To make your **About Me** section match the typography of the rest of the websit
             font-size: 1.5rem; 
             font-weight: 700;  
             transition: all 0.4s ease;
-            display: inline-block; /* THIS IS THE SECRET FOR SPINNING! */
+            display: inline-block; 
         }
 
         nav a:hover {
-            color: var(--accent-pink); /* Turns the word soft yellow/orange */
-            /* The soft nightlight glow! */
+            color: var(--accent-pink); 
             text-shadow: 
                 0px 0px 8px rgba(255, 69, 0, 0.5),  
                 0px 0px 15px rgba(255, 215, 0, 0.3); 
-            /* The relaxing breeze turn! */
             animation: slowTurn 6s ease-in-out infinite;
+        }
+
+        /* --- Custom Theme Switch Button --- */
+        .theme-switch {
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-left: 20px;
+            padding: 5px 10px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .theme-switch:hover {
+            transform: scale(1.1) rotate(15deg);
+        }
+
+        /* 🌟 CSS-Powered Icon Glow (Infinitely Crisp!) */
+        .theme-switch img {
+            transition: all 0.3s ease;
+        }
+
+        body:not(.light-mode) .theme-switch img {
+            filter: drop-shadow(0px 0px 8px var(--primary-neon));
         }
 
         /* --- Section Layouts --- */
@@ -127,7 +137,6 @@ To make your **About Me** section match the typography of the rest of the websit
             color: var(--primary-neon);
             font-size: 3.5rem;
             margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
             animation: glitch 3s infinite;
         }
 
@@ -136,16 +145,6 @@ To make your **About Me** section match the typography of the rest of the websit
             color: var(--text-muted);
             letter-spacing: 2px;
             margin-bottom: 30px;
-        }
-
-        .number-line {
-            margin-top: 30px;
-            padding-top: 15px;
-            border-top: 2px solid var(--primary-neon);
-            width: 350px;
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
         }
 
         /* --- Funky Custom Button --- */
@@ -161,7 +160,7 @@ To make your **About Me** section match the typography of the rest of the websit
             border: 2px solid var(--primary-neon);
             cursor: pointer;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s ease;
             box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
             border-radius: 4px;
             text-decoration: none;
@@ -181,6 +180,7 @@ To make your **About Me** section match the typography of the rest of the websit
             color: var(--text-main);
             margin-bottom: 50px;
             position: relative;
+            animation: headingPulse 3s infinite alternate; 
         }
 
         .section-title::after {
@@ -215,7 +215,7 @@ To make your **About Me** section match the typography of the rest of the websit
             text-align: left;
             position: relative;
             overflow: hidden;
-            transition: transform 0.4s ease, border-color 0.4s ease;
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
             cursor: pointer;
         }
 
@@ -228,12 +228,15 @@ To make your **About Me** section match the typography of the rest of the websit
             height: 100%;
             background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.8));
             z-index: 1;
+            transition: background 0.4s ease;
         }
 
+        /* 🚀 UPGRADED Dark Mode Neon Glow for Project Cards! */
         .work-card:hover {
-            transform: translateY(-10px) translateY(2px) scale(1.02);
+            transform: translateY(-8px) scale(1.02);
             border-color: var(--accent-pink);
-            box-shadow: -5px 5px 0px var(--primary-neon); 
+            box-shadow: 0 0 15px var(--accent-pink), 0 0 30px var(--primary-neon); 
+            z-index: 10; 
         }
 
         .work-card h3 {
@@ -251,7 +254,7 @@ To make your **About Me** section match the typography of the rest of the websit
             font-size: 0.9rem;
         }
 
-        /* --- About Me Section Upgraded Typography --- */
+        /* --- About Me Section --- */
         .about-container {
             max-width: 900px;
             width: 100%;
@@ -267,10 +270,11 @@ To make your **About Me** section match the typography of the rest of the websit
             font-size: 1.8rem;
             margin-bottom: 15px;
             letter-spacing: 2px;
+            animation: headingPulse 3s infinite alternate; 
         }
 
         .about-bio p {
-            font-family: 'Oswald', sans-serif; /* Matched to site body font */
+            font-family: 'Oswald', sans-serif; 
             font-size: 1.25rem;
             font-weight: 300;
             letter-spacing: 1px;
@@ -308,7 +312,7 @@ To make your **About Me** section match the typography of the rest of the websit
         }
 
         .skill-card p {
-            font-family: 'Oswald', sans-serif; /* Matched to site body font */
+            font-family: 'Oswald', sans-serif; 
             color: #aaa;
             font-size: 1.05rem;
             font-weight: 300;
@@ -317,26 +321,57 @@ To make your **About Me** section match the typography of the rest of the websit
             text-transform: uppercase;
         }
 
+        /* --- 🌟 BACKGROUND SHAPES 🌟 --- */
+        .neon-shape {
+            position: fixed; 
+            z-index: -1; 
+            opacity: 0.15; 
+        }
+
+        .circle { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--primary-neon); box-shadow: 0 0 15px var(--primary-neon), inset 0 0 15px var(--primary-neon); top: 25%; left: 10%; animation: shapeBlink 4s infinite alternate, floatShape 12s infinite linear; }
+        .square { width: 90px; height: 90px; border: 3px solid var(--accent-pink); box-shadow: 0 0 15px var(--accent-pink), inset 0 0 15px var(--accent-pink); bottom: 20%; right: 15%; animation: shapeBlink 5s infinite alternate, floatShape 15s infinite linear; animation-delay: 2s; }
+        .diamond { width: 70px; height: 70px; border: 3px solid var(--primary-neon); box-shadow: 0 0 15px var(--primary-neon), inset 0 0 15px var(--primary-neon); bottom: 40%; right: 8%; animation: shapeBlink 6s infinite alternate, floatShape 10s infinite linear; animation-delay: 1s; }
+        .pill { width: 35px; height: 90px; border-radius: 50px; border: 3px solid var(--accent-pink); box-shadow: 0 0 15px var(--accent-pink), inset 0 0 15px var(--accent-pink); top: 15%; right: 25%; animation: shapeBlink 7s infinite alternate, floatShape 14s infinite linear; animation-delay: 3s; }
+        .mini-orb { width: 25px; height: 25px; border-radius: 50%; border: 2px solid var(--primary-neon); box-shadow: 0 0 10px var(--primary-neon), inset 0 0 10px var(--primary-neon); top: 50%; left: 5%; animation: shapeBlink 3s infinite alternate, floatShape 8s infinite linear; animation-delay: 0.5s; }
+        .giant-ring { width: 250px; height: 250px; border-radius: 50%; border: 2px solid var(--accent-pink); box-shadow: 0 0 15px var(--accent-pink), inset 0 0 15px var(--accent-pink); top: -5%; left: -5%; animation: shapeBlink 8s infinite alternate, floatShape 20s infinite linear; animation-delay: 4s; }
+        .oval { width: 120px; height: 50px; border-radius: 50px; border: 3px solid var(--primary-neon); box-shadow: 0 0 15px var(--primary-neon), inset 0 0 15px var(--primary-neon); bottom: 15%; left: 25%; animation: shapeBlink 5s infinite alternate, floatShape 11s infinite linear; animation-delay: 1.5s; }
+        .small-square { width: 40px; height: 40px; border: 2px solid var(--primary-neon); box-shadow: 0 0 10px var(--primary-neon), inset 0 0 10px var(--primary-neon); top: 75%; right: 5%; animation: shapeBlink 4s infinite alternate, floatShape 9s infinite linear; animation-delay: 2.5s; }
+        .tall-diamond { width: 50px; height: 100px; border: 2px solid var(--accent-pink); box-shadow: 0 0 12px var(--accent-pink), inset 0 0 12px var(--accent-pink); top: 40%; left: 45%; animation: shapeBlink 6s infinite alternate, floatShape 13s infinite linear; animation-delay: 0.8s; }
+        .extra-ring { width: 60px; height: 60px; border-radius: 50%; border: 3px solid var(--primary-neon); box-shadow: 0 0 15px var(--primary-neon), inset 0 0 15px var(--primary-neon); bottom: 30%; right: 35%; animation: shapeBlink 5.5s infinite alternate, floatShape 12s infinite linear; animation-delay: 3.5s; }
+        .mini-pill-yellow { width: 20px; height: 50px; border-radius: 20px; border: 2px solid var(--accent-pink); box-shadow: 0 0 10px var(--accent-pink), inset 0 0 10px var(--accent-pink); top: 12%; right: 45%; animation: shapeBlink 3.5s infinite alternate, floatShape 7s infinite linear; animation-delay: 1.2s; }
+
         /* --- Keyframe Animations --- */
+        
+        /* Main Hero Glitch (Dark) */
         @keyframes glitch {
             0%, 100% { text-shadow: 0 0 20px rgba(0, 255, 204, 0.3); }
             50% { text-shadow: -3px 0 var(--accent-pink), 3px 0 var(--primary-neon); }
         }
 
-        /* This animation makes the background slowly blink between very dark orange and dark yellow */
-        @keyframes arcadeBlink {
-            0% {
-                background-color: #0d0d0d; /* Starts at dark gray */
-            }
-            50% {
-                background-color: #2a0c00; /* Slowly changes to dark, glowing orange */
-            }
-            100% {
-                background-color: #241900; /* Slowly changes to dark, glowing yellow */
-            }
+        /* Main Hero Glitch (Light) */
+        @keyframes lightGlitch {
+            0%, 100% { text-shadow: 0 0 15px rgba(255, 69, 0, 0.4); }
+            50% { text-shadow: -3px 0 var(--accent-pink), 3px 0 var(--primary-neon); }
         }
 
-        /* A super slow, tiny turn so it feels relaxing and not distracting */
+        /* Section Title Pulse (Dark) */
+        @keyframes headingPulse {
+            0% { text-shadow: 0 0 10px rgba(255, 69, 0, 0.4); }
+            100% { text-shadow: 0 0 25px var(--accent-pink), 0 0 15px var(--primary-neon); }
+        }
+
+        /* Section Title Pulse (Light) */
+        @keyframes lightHeadingPulse {
+            0% { text-shadow: 0 0 10px rgba(255, 69, 0, 0.3); }
+            100% { text-shadow: 0 0 20px rgba(255, 179, 0, 0.6), 0 0 15px rgba(255, 69, 0, 0.4); }
+        }
+
+        @keyframes arcadeBlink {
+            0% { background-color: #0d0d0d; }
+            50% { background-color: #2a0c00; }
+            100% { background-color: #241900; }
+        }
+
         @keyframes slowTurn {
             0% { transform: rotate(0deg); }
             25% { transform: rotate(-3deg); }
@@ -344,10 +379,19 @@ To make your **About Me** section match the typography of the rest of the websit
             100% { transform: rotate(0deg); }
         }
 
-                 /* 📱 THE UPGRADED MOBILE SHAPESHIFTING SPELL 📱 */
+        @keyframes shapeBlink {
+            0% { opacity: 0.05; } 
+            100% { opacity: 0.3; } 
+        }
+
+        @keyframes floatShape {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(45deg); }
+            100% { transform: translateY(0px) rotate(90deg); }
+        }
+
+        /* 📱 THE UPGRADED MOBILE SHAPESHIFTING SPELL 📱 */
         @media only screen and (max-width: 768px) {
-            
-            /* 1. Fix the Header: Stack the Logo on top and the words underneath */
             header {
                 display: flex !important;
                 flex-direction: column !important;
@@ -355,7 +399,6 @@ To make your **About Me** section match the typography of the rest of the websit
                 padding: 10px !important;
             }
             
-            /* Give the menu words room to breathe and wrap to a new line if needed */
             nav {
                 display: flex !important;
                 flex-wrap: wrap !important;
@@ -367,7 +410,6 @@ To make your **About Me** section match the typography of the rest of the websit
                 margin: 5px 10px !important;
             }
 
-            /* 2. Fix the Projects Container: Force it to be a stack */
             .grid-container {
                 display: flex !important;
                 flex-direction: column !important;
@@ -375,15 +417,13 @@ To make your **About Me** section match the typography of the rest of the websit
                 width: 100% !important;
             }
 
-            /* 3. The Poster Frame Fix: Target the ACTUAL Game Cards! */
             .work-card {
                 width: 90% !important; 
-                max-width: 350px !important; /* Stops them from stretching too wide */
-                height: 250px !important; /* Forces the card to be nice and tall! */
+                max-width: 350px !important; 
+                height: 250px !important; 
                 margin: 15px auto !important; 
             }
 
-            /* 4. Fix the 7-shape buttons on mobile */
             #collab a {
                 margin-left: 0px !important;
                 margin-right: 0px !important;
@@ -392,246 +432,116 @@ To make your **About Me** section match the typography of the rest of the websit
             }
         }
 
+        /* ========================================= */
+        /* ☀️ THE HYBRID LIGHT MODE OVERRIDES ☀️ */
+        /* ========================================= */
 
-                /* --- 🌟 BACKGROUND SHAPES 🌟 --- */
-        .neon-shape {
-            position: fixed; /* Keeps them floating on the screen even when you scroll */
-            z-index: -1; /* Pushes them completely behind your text and buttons! */
-            opacity: 0.15; /* VERY soft transparency so it doesn't hurt the eyes */
-        }
-
-        /* The Glowing Orange Circle */
-        .circle {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%; /* Makes it a perfect circle */
-            border: 3px solid var(--primary-neon); /* Hollow inside, fiery orange border */
-            box-shadow: 0 0 15px var(--primary-neon), inset 0 0 15px var(--primary-neon);
-            top: 25%; /* Places it near the top left */
-            left: 10%;
-            /* Uses the blink and float spells! */
-            animation: shapeBlink 4s infinite alternate, floatShape 12s infinite linear;
-        }
-
-        /* The Glowing Yellow Square */
-        .square {
-            width: 90px;
-            height: 90px;
-            border: 3px solid var(--accent-pink); /* Hollow inside, bright yellow border */
-            box-shadow: 0 0 15px var(--accent-pink), inset 0 0 15px var(--accent-pink);
-            bottom: 20%; /* Places it near the bottom right */
-            right: 15%;
-
-            /* Uses the same spells, but starts 2 seconds later so they blink at different times! */
-            animation: shapeBlink 5s infinite alternate, floatShape 15s infinite linear;
-            animation-delay: 2s; 
-        }
-
-                /* The Glowing Orange Diamond */
-        .diamond {
-            width: 70px;
-            height: 70px;
-            border: 3px solid var(--primary-neon);
-            box-shadow: 0 0 15px var(--primary-neon), inset 0 0 15px var(--primary-neon);
-            bottom: 40%; 
-            right: 8%; /* Placed on the middle-right side */
-            /* Uses the same spells, but floats a little faster! */
-            animation: shapeBlink 6s infinite alternate, floatShape 10s infinite linear;
-            animation-delay: 1s; 
-        }
-
-        /* The Glowing Yellow Pill/Capsule */
-        .pill {
-            width: 35px;
-            height: 90px;
-            border-radius: 50px; /* This makes the rectangle round on the top and bottom! */
-            border: 3px solid var(--accent-pink);
-            box-shadow: 0 0 15px var(--accent-pink), inset 0 0 15px var(--accent-pink);
-            top: 15%; 
-            right: 25%; /* Placed near the top right */
-            animation: shapeBlink 7s infinite alternate, floatShape 14s infinite linear;
-            animation-delay: 3s; 
-        }
-
-                /* The Tiny Orange Mini-Orb */
-        .mini-orb {
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            border: 2px solid var(--primary-neon);
-            box-shadow: 0 0 10px var(--primary-neon), inset 0 0 10px var(--primary-neon);
-            top: 50%; 
-            left: 5%; /* Placed on the middle-left side */
-            animation: shapeBlink 3s infinite alternate, floatShape 8s infinite linear;
-            animation-delay: 0.5s; 
-        }
-
-        /* 🟡 Giant Yellow Peeking Ring (Top Left Corner) */
-        .giant-ring {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            border: 2px solid var(--accent-pink);
-            box-shadow: 0 0 15px var(--accent-pink), inset 0 0 15px var(--accent-pink);
-            top: -5%; /* The negative number makes it peek halfway into the screen! */
-            left: -5%;
-            animation: shapeBlink 8s infinite alternate, floatShape 20s infinite linear;
-            animation-delay: 4s;
-        }
-
-        /* 🟠 Glowing Orange Oval (Bottom Left) */
-        .oval {
-            width: 120px;
-            height: 50px;
-            border-radius: 50px;
-            border: 3px solid var(--primary-neon);
-            box-shadow: 0 0 15px var(--primary-neon), inset 0 0 15px var(--primary-neon);
-            bottom: 15%;
-            left: 25%;
-            animation: shapeBlink 5s infinite alternate, floatShape 11s infinite linear;
-            animation-delay: 1.5s;
-        }
-
-        /* 🟠 Floating Small Orange Square (Bottom Right Edge) */
-        .small-square {
-            width: 40px;
-            height: 40px;
-            border: 2px solid var(--primary-neon);
-            box-shadow: 0 0 10px var(--primary-neon), inset 0 0 10px var(--primary-neon);
-            top: 75%;
-            right: 5%;
-            animation: shapeBlink 4s infinite alternate, floatShape 9s infinite linear;
-            animation-delay: 2.5s;
-        }
-
-        /* 🟡 Tall Yellow Diamond (Middle Left) */
-        .tall-diamond {
-            width: 50px;
-            height: 100px;
-            border: 2px solid var(--accent-pink);
-            box-shadow: 0 0 12px var(--accent-pink), inset 0 0 12px var(--accent-pink);
-            top: 40%;
-            left: 45%;
-            animation: shapeBlink 6s infinite alternate, floatShape 13s infinite linear;
-            animation-delay: 0.8s;
-        }
-
-        /* 🟠 Extra Orange Ring (Middle Right) */
-        .extra-ring {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: 3px solid var(--primary-neon);
-            box-shadow: 0 0 15px var(--primary-neon), inset 0 0 15px var(--primary-neon);
-            bottom: 30%;
-            right: 35%;
-            animation: shapeBlink 5.5s infinite alternate, floatShape 12s infinite linear;
-            animation-delay: 3.5s;
-        }
-
-        /* 🟡 Top Mini Yellow Pill (Top Middle) */
-        .mini-pill-yellow {
-            width: 20px;
-            height: 50px;
-            border-radius: 20px;
-            border: 2px solid var(--accent-pink);
-            box-shadow: 0 0 10px var(--accent-pink), inset 0 0 10px var(--accent-pink);
-            top: 12%;
-            right: 45%;
-            animation: shapeBlink 3.5s infinite alternate, floatShape 7s infinite linear;
-            animation-delay: 1.2s;
-        }
-
-        /* 🪄 The Soft Blinking Spell */
-        @keyframes shapeBlink {
-            0% { opacity: 0.05; } /* Barely visible */
-            100% { opacity: 0.3; } /* Softly brightens */
-        }
-
-
-        /* 🪄 The Soft Blinking Spell */
-        @keyframes shapeBlink {
-            0% { opacity: 0.05; } /* Barely visible */
-            100% { opacity: 0.3; } /* Softly brightens */
-        }
-
-        /* 🍃 The Gentle Floating and Spinning Spell */
-        @keyframes floatShape {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(45deg); }
-            100% { transform: translateY(0px) rotate(90deg); }
-        }
-
-                /* ☀️ THE LIGHT MODE CHANGEOVER SPELL ☀️ */
         body.light-mode {
-            --bg-color: #f4f4f9; /* Soft daytime white/gray */
-            --text-main: #111111; /* Dark text for easy reading */
-            --text-muted: #444444; 
-            background-color: var(--bg-color); 
-            animation: none; /* Turns off the dark mode arcade blink! */
+            background-color: #f4f4f9; 
+            animation: none; 
+        }
 
-             /* Fixes the Header background to be light and visible */
-            body.light-mode header {
+        body.light-mode header {
             background: rgba(244, 244, 249, 0.95); 
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
 
-            /* Turns the navigation links dark so they can be read */
-            body.light-mode nav a {
-             color: #111111; 
-             text-shadow: none; /* Removes muddy glows */
-            }
-
-            body.light-mode nav a:hover {
-             color: var(--primary-neon); 
-            }
-
-            /* Cleans up the Hero heading glow for light mode */
-            body.light-mode #hero h1 {
-              text-shadow: none; 
-            }
-
-        }
-
-        /* Fixes the Logo so it doesn't vanish in the light! */
+        /* 1. The Logo Hybrid */
         body.light-mode .my-cool-logo {
-            filter: invert(1) hue-rotate(180deg); 
-            mix-blend-mode: multiply;
+            filter: invert(1) grayscale(100%) contrast(1000%) !important; 
+            mix-blend-mode: multiply !important; 
+            animation: none !important; 
+            transition: all 0.4s ease !important;
         }
 
-        /* Keeps your game card text white so it pops against the pictures */
-        body.light-mode .work-card h3,
+        body.light-mode .my-cool-logo:hover {
+            filter: invert(1) hue-rotate(180deg) 
+                    drop-shadow(0px 0px 10px rgba(255, 69, 0, 0.6)) 
+                    drop-shadow(0px 0px 15px rgba(255, 215, 0, 0.4)) !important;
+            animation: slowTurn 6s ease-in-out infinite !important;
+        }
+
+        body.light-mode nav a {
+            color: #111111; 
+            text-shadow: none; 
+        }
+
+        body.light-mode nav a:hover {
+            color: var(--primary-neon); 
+        }
+        
+        body.light-mode .theme-switch img {
+            filter: none !important;
+        }
+
+        /* 2. Text Hybrid: Dark Readable Text, Animation handles the glow! */
+        body.light-mode #hero h1,
+        body.light-mode .section-title,
+        body.light-mode .about-bio h3 {
+            color: #111111 !important; 
+        }
+
+        /* 3. The Re-Activated Animations for Light Mode */
+        body.light-mode #hero h1 {
+            animation: lightGlitch 3s infinite !important;
+        }
+
+        body.light-mode .section-title,
+        body.light-mode .about-bio h3 {
+            animation: lightHeadingPulse 3s infinite alternate !important;
+        }
+
+        body.light-mode #hero p,
+        body.light-mode .about-bio p {
+            color: #333333 !important;
+        }
+
+        /* 4. Cards Base */
+        body.light-mode .work-card {
+            border: 3px solid #111111 !important;
+            box-shadow: 6px 6px 0px rgba(17, 17, 17, 0.15) !important; 
+        }
+        
+        /* 🚀 UPGRADED Hybrid Neon Glow for Light Mode Project Cards! */
+        body.light-mode .work-card:hover {
+            border-color: var(--accent-pink) !important;
+            box-shadow: 0 0 15px var(--accent-pink), 
+                        0 0 35px rgba(255, 69, 0, 0.8), 
+                        8px 8px 0px rgba(17, 17, 17, 0.2) !important; 
+            transform: translateY(-10px) scale(1.03) !important; 
+            z-index: 10 !important; 
+        }
+
+        body.light-mode .work-card::before {
+            background: linear-gradient(to bottom, transparent 30%, rgba(244, 244, 249, 0.95)) !important;
+        }
+
+        body.light-mode .work-card h3 {
+            color: #111111 !important;
+        }
+
         body.light-mode .work-card p {
-            color: #ffffff; 
+            color: var(--primary-neon) !important;
+            font-weight: 900 !important;
         }
 
-        /* The Sun/Moon Button Style */
-        .theme-switch {
-            background: transparent;
-            border: none;
-            font-size: 1.5rem;
-            border-radius: 50%;
-            cursor: pointer;
-            margin-left: 20px;
-            padding: 5px 10px;
-            transition: all 0.3s ease;
-            display: inline-block;
+        /* Skill Cards */
+        body.light-mode .skill-card {
+            background: #ffffff !important;
+            border: 2px solid #111111 !important;
+            border-left: 6px solid var(--primary-neon) !important;
         }
 
-        .theme-switch:hover {
-            transform: scale(1.2) rotate(15deg);
-            background: rgba(255, 69, 0, 0.2);
-            box-shadow: 0 0 15px var(--primary-neon);
+        body.light-mode .skill-card h4, 
+        body.light-mode .skill-card p {
+            color: #111111 !important;
         }
-
 
     </style>
-
 </head>
-
 <body>
 
-        <!-- 🌟 The Background Neon Shapes! 🌟 -->
+    <!-- 🌟 The Background Neon Shapes! 🌟 -->
     <div class="neon-shape circle"></div>
     <div class="neon-shape square"></div>
     <div class="neon-shape diamond"></div>
@@ -648,31 +558,24 @@ To make your **About Me** section match the typography of the rest of the websit
         <img src="darkThemeLogo.png" class="my-cool-logo" alt="My Logo">
 
         <nav>
-
             <a href="#hero">HOME</a>
             <a href="#works">MY PROJECTS</a>
             <a href="#about">WHO AM I?</a>
             <a href="#collab">COLLABORATION?</a>
             
-            <!-- Dark/Night theme switch button! -->
             <button class="theme-switch" id="themeBtn">
-                <img src="theme-on.svg" alt="Theme Switch" id="themeIcon" style="width: 50px; height: 50px;">
+                <img src="theme-on.svg" alt="Theme Switch" id="themeIcon" style="width: 50px; height: 50px; object-fit: contain;">
             </button>
-
-
         </nav>
-
     </header>
 
     <section id="hero">
         <h1>AHAMED MAAHIN SIDDIQ RAHUMAN</h1>
         <p>UI/UX DESIGNER</p>
-        
     </section>
 
     <section id="works">
         <h2 class="section-title">My PROJECTS</h2>
-
         <div class="grid-container">
             
             <a href="https://ahamed-maahin.itch.io/candy-war" target="_blank" class="work-card" style="background-image: url('candy-war.png'); background-size: cover; text-decoration: none;">
@@ -699,15 +602,11 @@ To make your **About Me** section match the typography of the rest of the websit
                 <h3>GAP</h3>
                 <p>DEVELOPER</p>
             </a>
-
-
         </div>
     </section>
 
-    <!-- Upgraded About Section -->
     <section id="about">
         <h2 class="section-title">who AM I?</h2>
-
         <div class="about-container">
             
             <div class="about-bio">
@@ -736,7 +635,6 @@ To make your **About Me** section match the typography of the rest of the websit
                     <p>Github, Adobe Photoshop, Figma, Procreate, Audacity</p>
                 </div>
             </div>
-
         </div>
 
         <div style="margin-top: 40px;">
@@ -749,23 +647,18 @@ To make your **About Me** section match the typography of the rest of the websit
     <section id="collab">
         <h2 class="section-title">COLLABORATION SPACE</h2>
         
-        <!-- We changed this box to "flex-direction: column" so they stack top-to-bottom instead of side-by-side! -->
         <div style="margin-top: 40px; display: flex; flex-direction: column; gap: 15px; align-items: center;">
-            
-            <!-- The Top Bar of the 7! We use "margin-right: 150px" to slide it to the left -->
             <a href="mailto:ahamaasidrah@gmail.com" class="cta-btn" style="width: 300px; height: 65px; padding: 0; display: flex; justify-content: center; align-items: center; margin-right: 150px;">
                 📧 EMAIL ME
             </a>
 
-            <!-- The Leg of the 7! We use "margin-left: 150px" to slide it to the right -->
             <a href="https://www.linkedin.com/in/ahamed-maahin-siddiq-rahuman-a680b41bb/" target="_blank" class="cta-btn" style="width: 300px; height: 65px; padding: 0; display: flex; justify-content: center; align-items: center; margin-left: 150px;">
                 💼 CONNECT ON LINKEDIN
             </a>
-            
         </div>
     </section>
 
-        <!-- 🧠 THE WEBSITE BRAIN for DARK/LIGHT mode switch(JavaScript) 🧠 -->
+    <!-- 🧠 THE WEBSITE BRAIN for DARK/LIGHT mode switch(JavaScript) 🧠 -->
     <script>
         const btn = document.getElementById('themeBtn');
         const themeIcon = document.getElementById('themeIcon');
@@ -782,8 +675,5 @@ To make your **About Me** section match the typography of the rest of the websit
             }
         });
     </script>
-
-
 </body>
 </html>
-
