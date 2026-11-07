@@ -85,6 +85,7 @@
             font-weight: 700;  
             transition: all 0.4s ease;
             display: inline-block; 
+            vertical-align: middle; 
         }
 
         nav a:hover {
@@ -93,6 +94,13 @@
                 0px 0px 8px rgba(255, 69, 0, 0.5),  
                 0px 0px 15px rgba(255, 215, 0, 0.3); 
             animation: slowTurn 6s ease-in-out infinite;
+        }
+
+        /* 📏 MODIFIER: For stacked navigation links */
+        nav a.nav-stacked {
+            text-align: center;
+            line-height: 1.1; 
+            font-size: 1.2rem; 
         }
 
         /* --- Custom Theme Switch Button --- */
@@ -140,6 +148,13 @@
             animation: glitch 3s infinite;
         }
 
+        /* 💨 The HIGH-VISIBILITY Neon Smoke Title Swap */
+        .role-text::after {
+            content: "UI/UX DESIGNER"; 
+            display: inline-block; 
+            animation: smokeSwap 8s infinite ease-in-out; 
+        }
+
         #hero p {
             font-size: 1.5rem;
             color: var(--text-muted);
@@ -165,13 +180,15 @@
             border-radius: 4px;
             text-decoration: none;
             display: inline-block;
+            text-align: center;
         }
 
+        /* 🔥 Added Button Shake to CV and Contact Buttons */
         .cta-btn:hover {
             color: var(--bg-color);
             background: var(--primary-neon);
             box-shadow: 0 0 30px var(--primary-neon);
-            transform: scale(1.05) rotate(-2deg); 
+            animation: btnShake 6s ease-in-out infinite; 
         }
 
         /* --- Works Gallery (Grid Layout) --- */
@@ -219,6 +236,7 @@
             cursor: pointer;
         }
 
+        /* 🎬 The Cinematic Fade */
         .work-card::before {
             content: '';
             position: absolute;
@@ -226,17 +244,17 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.8));
+            background: linear-gradient(to bottom, transparent 10%, rgba(13, 13, 13, 0.85) 55%, #0d0d0d 100%);
             z-index: 1;
             transition: background 0.4s ease;
         }
 
-        /* 🚀 UPGRADED Dark Mode Neon Glow for Project Cards! */
+        /* 🔥 Added Card Shake to Project Hover */
         .work-card:hover {
-            transform: translateY(-8px) scale(1.02);
             border-color: var(--accent-pink);
             box-shadow: 0 0 15px var(--accent-pink), 0 0 30px var(--primary-neon); 
             z-index: 10; 
+            animation: cardShake 6s ease-in-out infinite; 
         }
 
         .work-card h3 {
@@ -247,11 +265,47 @@
             margin-bottom: 5px;
         }
 
+        /* 📏 MODIFIER: For extremely long titles */
+        .work-card h3.long-title {
+            font-size: 1.05rem; 
+            line-height: 1.35; 
+            margin-bottom: 8px;
+        }
+
         .work-card p {
             position: relative;
             z-index: 2;
             color: var(--primary-neon);
             font-size: 0.9rem;
+        }
+
+        /* --- Mini Store Links for Dual-Platform Games --- */
+        .store-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            position: relative;
+            z-index: 2; 
+        }
+
+        .store-btn {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            color: var(--primary-neon);
+            border: 1px solid var(--primary-neon);
+            padding: 5px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            background: rgba(0, 0, 0, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        /* 🔥 Added Button Shake to iOS/Android Buttons */
+        .store-btn:hover {
+            background: var(--primary-neon);
+            color: var(--bg-color);
+            box-shadow: 0 0 15px var(--primary-neon);
+            animation: btnShake 6s ease-in-out infinite;
         }
 
         /* --- About Me Section --- */
@@ -342,200 +396,145 @@
 
         /* --- Keyframe Animations --- */
         
-        /* Main Hero Glitch (Dark) */
+        /* Fixed missing idle pulse for your logo! */
+        @keyframes insidePulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        /* Custom Project Card Shake (Preserves the 3D hover pop effect!) */
+        @keyframes cardShake {
+            0% { transform: translateY(-8px) scale(1.02) rotate(0deg); }
+            25% { transform: translateY(-8px) scale(1.02) rotate(-2deg); }
+            75% { transform: translateY(-8px) scale(1.02) rotate(2deg); }
+            100% { transform: translateY(-8px) scale(1.02) rotate(0deg); }
+        }
+
+        /* Custom Light Mode Project Card Shake */
+        @keyframes lightCardShake {
+            0% { transform: translateY(-10px) scale(1.03) rotate(0deg); }
+            25% { transform: translateY(-10px) scale(1.03) rotate(-2deg); }
+            75% { transform: translateY(-10px) scale(1.03) rotate(2deg); }
+            100% { transform: translateY(-10px) scale(1.03) rotate(0deg); }
+        }
+
+        /* Custom Button Shake (Preserves their hover pop effect!) */
+        @keyframes btnShake {
+            0% { transform: scale(1.05) rotate(0deg); }
+            25% { transform: scale(1.05) rotate(-3deg); }
+            75% { transform: scale(1.05) rotate(3deg); }
+            100% { transform: scale(1.05) rotate(0deg); }
+        }
+
+        @keyframes smokeSwap {
+            0%, 30% { content: "UI/UX DESIGNER"; color: currentColor; filter: blur(0px); letter-spacing: 2px; transform: translateY(0px); text-shadow: none; }
+            40% { content: "UI/UX DESIGNER"; color: transparent; filter: blur(10px); letter-spacing: 10px; transform: translateY(-15px); text-shadow: 0 -10px 20px var(--primary-neon), 0 -15px 40px var(--primary-neon); }
+            42% { content: "GAME DESIGNER"; color: transparent; filter: blur(10px); letter-spacing: -4px; transform: translateY(15px); text-shadow: 0 10px 20px var(--accent-pink), 0 15px 40px var(--accent-pink); }
+            50%, 80% { content: "GAME DESIGNER"; color: currentColor; filter: blur(0px); letter-spacing: 2px; transform: translateY(0px); text-shadow: none; }
+            90% { content: "GAME DESIGNER"; color: transparent; filter: blur(10px); letter-spacing: 10px; transform: translateY(-15px); text-shadow: 0 -10px 20px var(--accent-pink), 0 -15px 40px var(--accent-pink); }
+            92% { content: "UI/UX DESIGNER"; color: transparent; filter: blur(10px); letter-spacing: -4px; transform: translateY(15px); text-shadow: 0 10px 20px var(--primary-neon), 0 15px 40px var(--primary-neon); }
+            100% { content: "UI/UX DESIGNER"; color: currentColor; filter: blur(0px); letter-spacing: 2px; transform: translateY(0px); text-shadow: none; }
+        }
+
+        @keyframes lightSmokeSwap {
+            0%, 30% { content: "UI/UX DESIGNER"; color: #111111; filter: blur(0px); letter-spacing: 2px; transform: translateY(0px); text-shadow: none; }
+            40% { content: "UI/UX DESIGNER"; color: transparent; filter: blur(8px); letter-spacing: 10px; transform: translateY(-15px); text-shadow: 0 -10px 20px rgba(17, 17, 17, 0.8), 0 -15px 35px rgba(17, 17, 17, 0.5); }
+            42% { content: "GAME DESIGNER"; color: transparent; filter: blur(8px); letter-spacing: -4px; transform: translateY(15px); text-shadow: 0 10px 20px rgba(17, 17, 17, 0.8), 0 15px 35px rgba(17, 17, 17, 0.5); }
+            50%, 80% { content: "GAME DESIGNER"; color: #111111; filter: blur(0px); letter-spacing: 2px; transform: translateY(0px); text-shadow: none; }
+            90% { content: "GAME DESIGNER"; color: transparent; filter: blur(8px); letter-spacing: 10px; transform: translateY(-15px); text-shadow: 0 -10px 20px rgba(17, 17, 17, 0.8), 0 -15px 35px rgba(17, 17, 17, 0.5); }
+            92% { content: "UI/UX DESIGNER"; color: transparent; filter: blur(8px); letter-spacing: -4px; transform: translateY(15px); text-shadow: 0 10px 20px rgba(17, 17, 17, 0.8), 0 15px 35px rgba(17, 17, 17, 0.5); }
+            100% { content: "UI/UX DESIGNER"; color: #111111; filter: blur(0px); letter-spacing: 2px; transform: translateY(0px); text-shadow: none; }
+        }
+        
         @keyframes glitch {
             0%, 100% { text-shadow: 0 0 20px rgba(0, 255, 204, 0.3); }
             50% { text-shadow: -3px 0 var(--accent-pink), 3px 0 var(--primary-neon); }
         }
 
-        /* Main Hero Glitch (Light) */
         @keyframes lightGlitch {
-            0%, 100% { text-shadow: 0 0 15px rgba(255, 69, 0, 0.4); }
-            50% { text-shadow: -3px 0 var(--accent-pink), 3px 0 var(--primary-neon); }
+            0%, 100% { text-shadow: 0 0 15px rgba(255, 69, 0, 0.9), 0 0 30px rgba(255, 69, 0, 0.6); }
+            50% { text-shadow: -3px 0 var(--accent-pink), 3px 0 var(--primary-neon), 0 0 25px rgba(255, 179, 0, 0.9); }
         }
 
-        /* Section Title Pulse (Dark) */
         @keyframes headingPulse {
             0% { text-shadow: 0 0 10px rgba(255, 69, 0, 0.4); }
             100% { text-shadow: 0 0 25px var(--accent-pink), 0 0 15px var(--primary-neon); }
         }
 
-        /* Section Title Pulse (Light) */
         @keyframes lightHeadingPulse {
-            0% { text-shadow: 0 0 10px rgba(255, 69, 0, 0.3); }
-            100% { text-shadow: 0 0 20px rgba(255, 179, 0, 0.6), 0 0 15px rgba(255, 69, 0, 0.4); }
+            0% { text-shadow: 0 0 15px rgba(255, 69, 0, 0.8), 0 0 30px rgba(255, 69, 0, 0.5); }
+            100% { text-shadow: 0 0 20px rgba(255, 179, 0, 0.9), 0 0 40px rgba(255, 69, 0, 0.7), 0 0 60px rgba(255, 179, 0, 0.4); }
         }
 
-        @keyframes arcadeBlink {
-            0% { background-color: #0d0d0d; }
-            50% { background-color: #2a0c00; }
-            100% { background-color: #241900; }
-        }
+        @keyframes arcadeBlink { 0% { background-color: #0d0d0d; } 50% { background-color: #2a0c00; } 100% { background-color: #241900; } }
+        @keyframes slowTurn { 0% { transform: rotate(0deg); } 25% { transform: rotate(-3deg); } 75% { transform: rotate(3deg); } 100% { transform: rotate(0deg); } }
+        @keyframes shapeBlink { 0% { opacity: 0.05; } 100% { opacity: 0.3; } }
+        @keyframes floatShape { 0% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-30px) rotate(45deg); } 100% { transform: translateY(0px) rotate(90deg); } }
 
-        @keyframes slowTurn {
-            0% { transform: rotate(0deg); }
-            25% { transform: rotate(-3deg); }
-            75% { transform: rotate(3deg); }
-            100% { transform: rotate(0deg); }
-        }
-
-        @keyframes shapeBlink {
-            0% { opacity: 0.05; } 
-            100% { opacity: 0.3; } 
-        }
-
-        @keyframes floatShape {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(45deg); }
-            100% { transform: translateY(0px) rotate(90deg); }
-        }
-
-        /* 📱 THE UPGRADED MOBILE SHAPESHIFTING SPELL 📱 */
+        /* 📱 MOBILE RESPONSIVENESS */
         @media only screen and (max-width: 768px) {
-            header {
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
-                padding: 10px !important;
-            }
-            
-            nav {
-                display: flex !important;
-                flex-wrap: wrap !important;
-                justify-content: center !important;
-                margin-top: 15px !important;
-            }
-            nav a {
-                font-size: 1rem !important;
-                margin: 5px 10px !important;
-            }
-
-            .grid-container {
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
-                width: 100% !important;
-            }
-
-            .work-card {
-                width: 90% !important; 
-                max-width: 350px !important; 
-                height: 250px !important; 
-                margin: 15px auto !important; 
-            }
-
-            #collab a {
-                margin-left: 0px !important;
-                margin-right: 0px !important;
-                width: 90% !important; 
-                max-width: 300px !important;
-            }
+            header { display: flex !important; flex-direction: column !important; align-items: center !important; padding: 10px !important; }
+            nav { display: flex !important; flex-wrap: wrap !important; justify-content: center !important; margin-top: 15px !important; }
+            nav a { font-size: 1rem !important; margin: 5px 10px !important; }
+            nav a.nav-stacked { font-size: 0.9rem !important; } 
+            .grid-container { display: flex !important; flex-direction: column !important; align-items: center !important; width: 100% !important; }
+            .work-card { width: 90% !important; max-width: 350px !important; height: 250px !important; margin: 15px auto !important; }
+            #collab a { margin-left: 0px !important; margin-right: 0px !important; width: 90% !important; max-width: 300px !important; }
         }
 
         /* ========================================= */
         /* ☀️ THE HYBRID LIGHT MODE OVERRIDES ☀️ */
         /* ========================================= */
 
-        body.light-mode {
-            background-color: #f4f4f9; 
-            animation: none; 
-        }
+        body.light-mode { background-color: #f4f4f9; animation: none; }
+        body.light-mode header { background: rgba(244, 244, 249, 0.95); border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+        body.light-mode .my-cool-logo { filter: invert(1) grayscale(100%) contrast(1000%) !important; mix-blend-mode: multiply !important; animation: none !important; transition: all 0.4s ease !important; }
+        body.light-mode .my-cool-logo:hover { filter: invert(1) hue-rotate(180deg) drop-shadow(0px 0px 10px rgba(255, 69, 0, 0.6)) drop-shadow(0px 0px 15px rgba(255, 215, 0, 0.4)) !important; animation: slowTurn 6s ease-in-out infinite !important; }
+        body.light-mode nav a { color: #111111; text-shadow: none; }
+        body.light-mode nav a:hover { color: var(--primary-neon); }
+        body.light-mode .theme-switch img { filter: none !important; }
+        body.light-mode #hero h1, body.light-mode .section-title, body.light-mode .about-bio h3 { color: #111111 !important; }
+        body.light-mode #hero h1 { animation: lightGlitch 3s infinite !important; }
+        body.light-mode .section-title, body.light-mode .about-bio h3 { animation: lightHeadingPulse 3s infinite alternate !important; }
+        body.light-mode .role-text::after { animation: lightSmokeSwap 8s infinite ease-in-out !important; }
+        body.light-mode #hero p, body.light-mode .about-bio p { color: #333333 !important; }
 
-        body.light-mode header {
-            background: rgba(244, 244, 249, 0.95); 
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        /* 1. The Logo Hybrid */
-        body.light-mode .my-cool-logo {
-            filter: invert(1) grayscale(100%) contrast(1000%) !important; 
-            mix-blend-mode: multiply !important; 
-            animation: none !important; 
-            transition: all 0.4s ease !important;
-        }
-
-        body.light-mode .my-cool-logo:hover {
-            filter: invert(1) hue-rotate(180deg) 
-                    drop-shadow(0px 0px 10px rgba(255, 69, 0, 0.6)) 
-                    drop-shadow(0px 0px 15px rgba(255, 215, 0, 0.4)) !important;
-            animation: slowTurn 6s ease-in-out infinite !important;
-        }
-
-        body.light-mode nav a {
-            color: #111111; 
-            text-shadow: none; 
-        }
-
-        body.light-mode nav a:hover {
-            color: var(--primary-neon); 
-        }
-        
-        body.light-mode .theme-switch img {
-            filter: none !important;
-        }
-
-        /* 2. Text Hybrid: Dark Readable Text, Animation handles the glow! */
-        body.light-mode #hero h1,
-        body.light-mode .section-title,
-        body.light-mode .about-bio h3 {
-            color: #111111 !important; 
-        }
-
-        /* 3. The Re-Activated Animations for Light Mode */
-        body.light-mode #hero h1 {
-            animation: lightGlitch 3s infinite !important;
-        }
-
-        body.light-mode .section-title,
-        body.light-mode .about-bio h3 {
-            animation: lightHeadingPulse 3s infinite alternate !important;
-        }
-
-        body.light-mode #hero p,
-        body.light-mode .about-bio p {
-            color: #333333 !important;
-        }
-
-        /* 4. Cards Base */
+        /* 💡 High-Contrast Dark Cards in Light Mode */
         body.light-mode .work-card {
             border: 3px solid #111111 !important;
             box-shadow: 6px 6px 0px rgba(17, 17, 17, 0.15) !important; 
         }
         
-        /* 🚀 UPGRADED Hybrid Neon Glow for Light Mode Project Cards! */
         body.light-mode .work-card:hover {
             border-color: var(--accent-pink) !important;
-            box-shadow: 0 0 15px var(--accent-pink), 
-                        0 0 35px rgba(255, 69, 0, 0.8), 
-                        8px 8px 0px rgba(17, 17, 17, 0.2) !important; 
-            transform: translateY(-10px) scale(1.03) !important; 
+            box-shadow: 0 0 15px var(--accent-pink), 0 0 35px rgba(255, 69, 0, 0.8), 8px 8px 0px rgba(17, 17, 17, 0.2) !important; 
             z-index: 10 !important; 
+            /* 🔥 Added Light Card Shake */
+            animation: lightCardShake 6s ease-in-out infinite !important;
         }
 
         body.light-mode .work-card::before {
-            background: linear-gradient(to bottom, transparent 30%, rgba(244, 244, 249, 0.95)) !important;
+            background: linear-gradient(to bottom, transparent 10%, rgba(13, 13, 13, 0.85) 55%, #0d0d0d 100%) !important;
         }
 
-        body.light-mode .work-card h3 {
-            color: #111111 !important;
-        }
-
-        body.light-mode .work-card p {
+        body.light-mode .work-card h3 { color: var(--text-main) !important; }
+        body.light-mode .work-card p { color: var(--primary-neon) !important; }
+        
+        body.light-mode .store-btn {
             color: var(--primary-neon) !important;
-            font-weight: 900 !important;
+            border-color: var(--primary-neon) !important;
+            background: rgba(0, 0, 0, 0.6) !important;
         }
 
-        /* Skill Cards */
-        body.light-mode .skill-card {
-            background: #ffffff !important;
-            border: 2px solid #111111 !important;
-            border-left: 6px solid var(--primary-neon) !important;
+        /* iOS/Android button shake carries over automatically! */
+        body.light-mode .store-btn:hover {
+            background: var(--primary-neon) !important;
+            color: var(--bg-color) !important;
+            box-shadow: 0 0 15px var(--primary-neon) !important;
         }
 
-        body.light-mode .skill-card h4, 
-        body.light-mode .skill-card p {
-            color: #111111 !important;
-        }
+        body.light-mode .skill-card { background: #ffffff !important; border: 2px solid #111111 !important; border-left: 6px solid var(--primary-neon) !important; }
+        body.light-mode .skill-card h4, body.light-mode .skill-card p { color: #111111 !important; }
 
     </style>
 </head>
@@ -559,6 +558,7 @@
 
         <nav>
             <a href="#hero">HOME</a>
+            <a href="#pro-works" class="nav-stacked">PROFESSIONAL<br>PROJECTS</a>
             <a href="#works">MY PROJECTS</a>
             <a href="#about">WHO AM I?</a>
             <a href="#collab">COLLABORATION?</a>
@@ -571,11 +571,67 @@
 
     <section id="hero">
         <h1>AHAMED MAAHIN SIDDIQ RAHUMAN</h1>
-        <p>UI/UX DESIGNER</p>
+        <p class="role-text"></p> 
+    </section>
+
+    <!-- 🚀 Professional Projects Section -->
+    <section id="pro-works">
+        <h2 class="section-title">PROFESSIONAL PROJECTS</h2>
+        <div class="grid-container">
+            
+            <div class="work-card" style="background-image: url('random-room-escape.png'); background-size: cover;">
+                <h3 class="long-title">RANDOM ROOM ESCAPE - Door Exit & RANDOM ESCAPE GAME: ROOM EXIT</h3>
+                <p>GAME DESIGNER</p>
+                
+                <div class="store-links">
+                    <a href="https://apps.apple.com/us/app/random-room-escape-door-exit/id6444102569" target="_blank" class="store-btn"> iOS</a>
+                    <a href="https://play.google.com/store/apps/details?id=air.com.hfg.randomRoomEscape" target="_blank" class="store-btn"> ANDROID</a>
+                </div>
+            </div>
+
+            <div class="work-card" style="background-image: url('christmas-game.png'); background-size: cover;">
+                <h3 class="long-title">CHRISTMAS GAME - THE LOST SANTA & CHRISTMAS MYSTERY: LOST SANTA</h3>
+                <p>GAME DESIGNER</p>
+
+                <div class="store-links">
+                    <a href="https://apps.apple.com/in/app/christmas-game-the-lost-santa/id1660745238" target="_blank" class="store-btn"> iOS</a>
+                    <a href="https://play.google.com/store/apps/details?id=air.com.hfg.christmaslostsanta" target="_blank" class="store-btn"> ANDROID</a>
+                </div>
+            </div>
+
+            <div class="work-card" style="background-image: url('100-doors-escape.png'); background-size: cover;">
+                <h3>100 DOORS ESCAPE : MYSTERY LAND</h3>
+                <p>GAME DESIGNER</p>
+
+                <div class="store-links">
+                    <a href="https://apps.apple.com/in/app/100-doors-escape-mystery-land/id1660916176" target="_blank" class="store-btn"> iOS</a>
+                    <a href="https://play.google.com/store/apps/details?id=air.com.hfg.mysterylanddoors" target="_blank" class="store-btn"> ANDROID</a>
+                </div>
+            </div>
+
+            <div class="work-card" style="background-image: url('mystical-tales.png'); background-size: cover;">
+                <h3>Escape Room: Mystical Tales</h3>
+                <p>GAME DESIGNER</p>
+
+                <div class="store-links">
+                    <a href="https://play.google.com/store/apps/details?id=air.com.hfg.mysticaltales&pcampaignid=web_share" target="_blank" class="store-btn"> ANDROID</a>
+                </div>
+            </div>
+
+            <div class="work-card" style="background-image: url('mysterious-dream.png'); background-size: cover;">
+                <h3>Escape Room: Mysterious Dream</h3>
+                <p>GAME DESIGNER</p>
+
+                <div class="store-links">
+                    <a href="https://play.google.com/store/apps/details?id=air.com.hfg.nightmaremystery&pcampaignid=web_share" target="_blank" class="store-btn"> ANDROID</a>
+                </div>
+            </div>
+
+        </div>
     </section>
 
     <section id="works">
-        <h2 class="section-title">My PROJECTS</h2>
+        <h2 class="section-title">MY PROJECTS</h2>
         <div class="grid-container">
             
             <a href="https://www.artstation.com/artwork/rlaO56" target="_blank" class="work-card" style="background-image: url('kick-and-score.png'); background-size: cover; text-decoration: none;">
@@ -598,8 +654,6 @@
                 <p>UI/UX DEVELOPER</p>
             </a>
 
-            
-
             <a href="https://ahamed-maahin.itch.io/r0ll-on" target="_blank" class="work-card" style="background-image: url('r0ll-on.png'); background-size: cover; text-decoration: none;">
                 <h3>R0LL ON</h3>
                 <p>DEVELOPER</p>
@@ -619,10 +673,10 @@
             <div class="about-bio">
                 <h3>Hello, I'm AHAMED MAAHIN SIDDIQ RAHUMAN 👋</h3>
                 <p>
-                    I am a multi-disciplinary UI/UX designer in GAME DEVELOPMENT Industry and passionate about crafting immersive, user-centered digital environments. I blend tactile interface design, soundscapes, and interactive mechanics to craft engaging user experiences.
+                    I am a multi-disciplinary UI/UX and Game Designer passionate about crafting immersive, user-centered digital environments. I blend tactile interface design, soundscapes, and core gameplay mechanics to build highly engaging player experiences.
                 </p>
                 <p>
-                    Whether I'm wireframing game interfaces, mapping user journeys, or prototyping interactive levels, my goal is always the same: make it intuitive, beautiful, functional and engaging.
+                    Whether I am wireframing game interfaces, mapping user journeys, or prototyping interactive levels, my goal is always the same: make it intuitive, beautiful, functional, and deeply engaging.
                 </p>
             </div>
 
@@ -644,9 +698,12 @@
             </div>
         </div>
 
-        <div style="margin-top: 40px;">
-            <a href="https://drive.google.com/file/d/1cKCB46cZAZqF8Ov8XjbniLlgaq3I9mmJ/view?usp=sharing" target="_blank" class="cta-btn">
-                📄 About Me (CV)
+        <div style="margin-top: 40px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+            <a href="https://drive.google.com/file/d/137rmRoGE4HC1VwDv9Alq_-WEiHG3KnKu/view?usp=sharing" target="_blank" class="cta-btn">
+             📄 UI/UX CV
+            </a>
+            <a href="https://drive.google.com/file/d/1v4sG1nPV_leC3fhOFd4fGtqIrLkcQIFa/view?usp=sharing" target="_blank" class="cta-btn">
+                🎮 GAME DESIGNER CV
             </a>
         </div>
     </section>
