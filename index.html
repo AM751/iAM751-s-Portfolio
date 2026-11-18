@@ -120,7 +120,6 @@
             transform: scale(1.1) rotate(15deg);
         }
 
-        /* 🌟 CSS-Powered Icon Glow (Infinitely Crisp!) */
         .theme-switch img {
             transition: all 0.3s ease;
         }
@@ -148,7 +147,6 @@
             animation: glitch 3s infinite;
         }
 
-        /* 💨 The HIGH-VISIBILITY Neon Smoke Title Swap */
         .role-text::after {
             content: "UI/UX DESIGNER"; 
             display: inline-block; 
@@ -183,7 +181,6 @@
             text-align: center;
         }
 
-        /* 🔥 Added Button Shake to CV and Contact Buttons */
         .cta-btn:hover {
             color: var(--bg-color);
             background: var(--primary-neon);
@@ -236,7 +233,6 @@
             cursor: pointer;
         }
 
-        /* 🎬 The Cinematic Fade */
         .work-card::before {
             content: '';
             position: absolute;
@@ -249,7 +245,6 @@
             transition: background 0.4s ease;
         }
 
-        /* 🔥 Added Card Shake to Project Hover */
         .work-card:hover {
             border-color: var(--accent-pink);
             box-shadow: 0 0 15px var(--accent-pink), 0 0 30px var(--primary-neon); 
@@ -265,7 +260,6 @@
             margin-bottom: 5px;
         }
 
-        /* 📏 MODIFIER: For extremely long titles */
         .work-card h3.long-title {
             font-size: 1.05rem; 
             line-height: 1.35; 
@@ -279,7 +273,6 @@
             font-size: 0.9rem;
         }
 
-        /* --- Mini Store Links for Dual-Platform Games --- */
         .store-links {
             display: flex;
             gap: 10px;
@@ -300,7 +293,6 @@
             transition: all 0.3s ease;
         }
 
-        /* 🔥 Added Button Shake to iOS/Android Buttons */
         .store-btn:hover {
             background: var(--primary-neon);
             color: var(--bg-color);
@@ -395,37 +387,11 @@
         .mini-pill-yellow { width: 20px; height: 50px; border-radius: 20px; border: 2px solid var(--accent-pink); box-shadow: 0 0 10px var(--accent-pink), inset 0 0 10px var(--accent-pink); top: 12%; right: 45%; animation: shapeBlink 3.5s infinite alternate, floatShape 7s infinite linear; animation-delay: 1.2s; }
 
         /* --- Keyframe Animations --- */
+        @keyframes insidePulse { 0% { transform: scale(1); } 100% { transform: scale(1.05); } }
+        @keyframes cardShake { 0% { transform: translateY(-8px) scale(1.02) rotate(0deg); } 25% { transform: translateY(-8px) scale(1.02) rotate(-2deg); } 75% { transform: translateY(-8px) scale(1.02) rotate(2deg); } 100% { transform: translateY(-8px) scale(1.02) rotate(0deg); } }
+        @keyframes lightCardShake { 0% { transform: translateY(-10px) scale(1.03) rotate(0deg); } 25% { transform: translateY(-10px) scale(1.03) rotate(-2deg); } 75% { transform: translateY(-10px) scale(1.03) rotate(2deg); } 100% { transform: translateY(-10px) scale(1.03) rotate(0deg); } }
+        @keyframes btnShake { 0% { transform: scale(1.05) rotate(0deg); } 25% { transform: scale(1.05) rotate(-3deg); } 75% { transform: scale(1.05) rotate(3deg); } 100% { transform: scale(1.05) rotate(0deg); } }
         
-        /* Fixed missing idle pulse for your logo! */
-        @keyframes insidePulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
-        }
-
-        /* Custom Project Card Shake (Preserves the 3D hover pop effect!) */
-        @keyframes cardShake {
-            0% { transform: translateY(-8px) scale(1.02) rotate(0deg); }
-            25% { transform: translateY(-8px) scale(1.02) rotate(-2deg); }
-            75% { transform: translateY(-8px) scale(1.02) rotate(2deg); }
-            100% { transform: translateY(-8px) scale(1.02) rotate(0deg); }
-        }
-
-        /* Custom Light Mode Project Card Shake */
-        @keyframes lightCardShake {
-            0% { transform: translateY(-10px) scale(1.03) rotate(0deg); }
-            25% { transform: translateY(-10px) scale(1.03) rotate(-2deg); }
-            75% { transform: translateY(-10px) scale(1.03) rotate(2deg); }
-            100% { transform: translateY(-10px) scale(1.03) rotate(0deg); }
-        }
-
-        /* Custom Button Shake (Preserves their hover pop effect!) */
-        @keyframes btnShake {
-            0% { transform: scale(1.05) rotate(0deg); }
-            25% { transform: scale(1.05) rotate(-3deg); }
-            75% { transform: scale(1.05) rotate(3deg); }
-            100% { transform: scale(1.05) rotate(0deg); }
-        }
-
         @keyframes smokeSwap {
             0%, 30% { content: "UI/UX DESIGNER"; color: currentColor; filter: blur(0px); letter-spacing: 2px; transform: translateY(0px); text-shadow: none; }
             40% { content: "UI/UX DESIGNER"; color: transparent; filter: blur(10px); letter-spacing: 10px; transform: translateY(-15px); text-shadow: 0 -10px 20px var(--primary-neon), 0 -15px 40px var(--primary-neon); }
@@ -446,26 +412,10 @@
             100% { content: "UI/UX DESIGNER"; color: #111111; filter: blur(0px); letter-spacing: 2px; transform: translateY(0px); text-shadow: none; }
         }
         
-        @keyframes glitch {
-            0%, 100% { text-shadow: 0 0 20px rgba(0, 255, 204, 0.3); }
-            50% { text-shadow: -3px 0 var(--accent-pink), 3px 0 var(--primary-neon); }
-        }
-
-        @keyframes lightGlitch {
-            0%, 100% { text-shadow: 0 0 15px rgba(255, 69, 0, 0.9), 0 0 30px rgba(255, 69, 0, 0.6); }
-            50% { text-shadow: -3px 0 var(--accent-pink), 3px 0 var(--primary-neon), 0 0 25px rgba(255, 179, 0, 0.9); }
-        }
-
-        @keyframes headingPulse {
-            0% { text-shadow: 0 0 10px rgba(255, 69, 0, 0.4); }
-            100% { text-shadow: 0 0 25px var(--accent-pink), 0 0 15px var(--primary-neon); }
-        }
-
-        @keyframes lightHeadingPulse {
-            0% { text-shadow: 0 0 15px rgba(255, 69, 0, 0.8), 0 0 30px rgba(255, 69, 0, 0.5); }
-            100% { text-shadow: 0 0 20px rgba(255, 179, 0, 0.9), 0 0 40px rgba(255, 69, 0, 0.7), 0 0 60px rgba(255, 179, 0, 0.4); }
-        }
-
+        @keyframes glitch { 0%, 100% { text-shadow: 0 0 20px rgba(0, 255, 204, 0.3); } 50% { text-shadow: -3px 0 var(--accent-pink), 3px 0 var(--primary-neon); } }
+        @keyframes lightGlitch { 0%, 100% { text-shadow: 0 0 15px rgba(255, 69, 0, 0.9), 0 0 30px rgba(255, 69, 0, 0.6); } 50% { text-shadow: -3px 0 var(--accent-pink), 3px 0 var(--primary-neon), 0 0 25px rgba(255, 179, 0, 0.9); } }
+        @keyframes headingPulse { 0% { text-shadow: 0 0 10px rgba(255, 69, 0, 0.4); } 100% { text-shadow: 0 0 25px var(--accent-pink), 0 0 15px var(--primary-neon); } }
+        @keyframes lightHeadingPulse { 0% { text-shadow: 0 0 15px rgba(255, 69, 0, 0.8), 0 0 30px rgba(255, 69, 0, 0.5); } 100% { text-shadow: 0 0 20px rgba(255, 179, 0, 0.9), 0 0 40px rgba(255, 69, 0, 0.7), 0 0 60px rgba(255, 179, 0, 0.4); } }
         @keyframes arcadeBlink { 0% { background-color: #0d0d0d; } 50% { background-color: #2a0c00; } 100% { background-color: #241900; } }
         @keyframes slowTurn { 0% { transform: rotate(0deg); } 25% { transform: rotate(-3deg); } 75% { transform: rotate(3deg); } 100% { transform: rotate(0deg); } }
         @keyframes shapeBlink { 0% { opacity: 0.05; } 100% { opacity: 0.3; } }
@@ -499,40 +449,16 @@
         body.light-mode .role-text::after { animation: lightSmokeSwap 8s infinite ease-in-out !important; }
         body.light-mode #hero p, body.light-mode .about-bio p { color: #333333 !important; }
 
-        /* 💡 High-Contrast Dark Cards in Light Mode */
-        body.light-mode .work-card {
-            border: 3px solid #111111 !important;
-            box-shadow: 6px 6px 0px rgba(17, 17, 17, 0.15) !important; 
-        }
-        
-        body.light-mode .work-card:hover {
-            border-color: var(--accent-pink) !important;
-            box-shadow: 0 0 15px var(--accent-pink), 0 0 35px rgba(255, 69, 0, 0.8), 8px 8px 0px rgba(17, 17, 17, 0.2) !important; 
-            z-index: 10 !important; 
-            /* 🔥 Added Light Card Shake */
-            animation: lightCardShake 6s ease-in-out infinite !important;
-        }
-
-        body.light-mode .work-card::before {
-            background: linear-gradient(to bottom, transparent 10%, rgba(13, 13, 13, 0.85) 55%, #0d0d0d 100%) !important;
-        }
-
+        /* Project Cards */
+        body.light-mode .work-card { border: 3px solid #111111 !important; box-shadow: 6px 6px 0px rgba(17, 17, 17, 0.15) !important; }
+        body.light-mode .work-card:hover { border-color: var(--accent-pink) !important; box-shadow: 0 0 15px var(--accent-pink), 0 0 35px rgba(255, 69, 0, 0.8), 8px 8px 0px rgba(17, 17, 17, 0.2) !important; z-index: 10 !important; animation: lightCardShake 6s ease-in-out infinite !important; }
+        body.light-mode .work-card::before { background: linear-gradient(to bottom, transparent 10%, rgba(13, 13, 13, 0.85) 55%, #0d0d0d 100%) !important; }
         body.light-mode .work-card h3 { color: var(--text-main) !important; }
         body.light-mode .work-card p { color: var(--primary-neon) !important; }
         
-        body.light-mode .store-btn {
-            color: var(--primary-neon) !important;
-            border-color: var(--primary-neon) !important;
-            background: rgba(0, 0, 0, 0.6) !important;
-        }
-
-        /* iOS/Android button shake carries over automatically! */
-        body.light-mode .store-btn:hover {
-            background: var(--primary-neon) !important;
-            color: var(--bg-color) !important;
-            box-shadow: 0 0 15px var(--primary-neon) !important;
-        }
-
+        body.light-mode .store-btn { color: var(--primary-neon) !important; border-color: var(--primary-neon) !important; background: rgba(0, 0, 0, 0.6) !important; }
+        body.light-mode .store-btn:hover { background: var(--primary-neon) !important; color: var(--bg-color) !important; box-shadow: 0 0 15px var(--primary-neon) !important; }
+        
         body.light-mode .skill-card { background: #ffffff !important; border: 2px solid #111111 !important; border-left: 6px solid var(--primary-neon) !important; }
         body.light-mode .skill-card h4, body.light-mode .skill-card p { color: #111111 !important; }
 
@@ -560,6 +486,7 @@
             <a href="#hero">HOME</a>
             <a href="#pro-works" class="nav-stacked">PROFESSIONAL<br>PROJECTS</a>
             <a href="#works">MY PROJECTS</a>
+            <a href="#certifications">CERTIFICATIONS</a>
             <a href="#about">WHO AM I?</a>
             <a href="#collab">COLLABORATION?</a>
             
@@ -666,6 +593,45 @@
         </div>
     </section>
 
+    <!-- 🎓 CERTIFICATIONS SECTION (PDF Links) -->
+    <section id="certifications">
+        <h2 class="section-title">CERTIFICATIONS</h2>
+        <div class="grid-container">
+            
+            <!-- Certificate 1 -- CertificateOfCompletionCertPrepUnityCertified Associate Game Developer UI and 2D Games -->
+           
+            <div class="work-card" style="background-image: url('cert/image/uideveloper.jpg'); background-size: cover;">
+                <h3 class="long-title">CERT PREP: UNITY CERTIFIED ASSOCIATE GAME DEVELOPER UI AND 2D</h3>
+                <p>LINKEDIN LEARNING</p>
+                <div class="store-links">
+                    <!-- href points to the .pdf file, target="_blank" opens a new tab! -->
+                    <a href="cert/pdf/CertificateOfCompletionCertPrepUnityCertified Associate Game Developer UI and 2D Games.pdf" target="_blank" class="store-btn">📄 VIEW PDF</a>
+                </div>
+            </div>
+
+            <!-- Certificate 2 -->
+           
+            <div class="work-card" style="background-image: url('cert/image/Gamifying Training to Improve Learning Outcomes Certificate.jpg'); background-size: cover;">
+                <h3 class="long-title">Gamifying Training</h3>
+                <p>LINKEDIN LEARNING</p>
+                <div class="store-links">
+                    <!-- href points to the .pdf file, target="_blank" opens a new tab! -->
+                    <a href="cert/pdf/CertificateOfCompletion_Gamifying Training to Improve Learning Outcomes.pdf" target="_blank" class="store-btn">📄 VIEW PDF</a>
+                </div>
+            </div>
+
+            <!-- Certificate 3 -->
+            <div class="work-card" style="background-image: url('cert/image/LogoDesign.jpg'); background-size: cover;">
+                <h3 class="long-title">Logo Design</h3>
+                <p>LINKEDIN LEARNING</p>
+                <div class="store-links">
+                    <a href="cert/pdf/LogoDesign.pdf" target="_blank" class="store-btn">📄 VIEW PDF</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <section id="about">
         <h2 class="section-title">who AM I?</h2>
         <div class="about-container">
@@ -682,28 +648,28 @@
 
             <div class="skills-grid">
                 <div class="skill-card">
-                    <h4>🎨 UI/UX Design</h4>
-                    <p>Figma, Adobe After Effects, Wireframing, User Research, Prototyping, Interactive Layouts</p>
+                    <h4>🎨 UI/UX & Art</h4>
+                    <p>Figma, Adobe After Effects, Adobe Photoshop, Procreate</p>
                 </div>
 
                 <div class="skill-card">
                     <h4>🎮 Game Dev & Engines</h4>
-                    <p>Unity, Level Design, User Interface Development</p>
+                    <p>Unity 3D, Unreal Engine, Level Design, Mechanics</p>
                 </div>
 
                 <div class="skill-card">
-                    <h4>🛠️ Tools & Technologies</h4>
-                    <p>Github, Adobe Photoshop, Figma, Procreate, Adobe After Effects, Audacity</p>
+                    <h4>🛠️ Tools & Production</h4>
+                    <p>Github, Audacity, User Research, Prototyping</p>
                 </div>
             </div>
         </div>
 
         <div style="margin-top: 40px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
             <a href="https://drive.google.com/file/d/137rmRoGE4HC1VwDv9Alq_-WEiHG3KnKu/view?usp=sharing" target="_blank" class="cta-btn">
-             📄 UI/UX CV
+                 📄 UI/UX CV
             </a>
             <a href="https://drive.google.com/file/d/1v4sG1nPV_leC3fhOFd4fGtqIrLkcQIFa/view?usp=sharing" target="_blank" class="cta-btn">
-                🎮 GAME DESIGNER CV
+                🎮 GAME DESIGN CV
             </a>
         </div>
     </section>
@@ -733,9 +699,9 @@
             
             // Swap the custom Figma SVGs!
             if(document.body.classList.contains('light-mode')) {
-                themeIcon.src = 'theme-off.svg'; // The dark grey version
+                themeIcon.src = 'theme-off.svg'; 
             } else {
-                themeIcon.src = 'theme-on.svg'; // The glowing yellow version
+                themeIcon.src = 'theme-on.svg'; 
             }
         });
     </script>
